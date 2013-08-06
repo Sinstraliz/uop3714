@@ -1,0 +1,25 @@
+﻿@model PlovdivTournament.Web.Models.ProfileViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<div id="ProfileWrap">
+    <div class="EditButton">
+        <a href="Profile/Edit">Edit</a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="Profile_Photo">
+        <img src=@String.Format("Image/Get/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133) />
+    </div>
+    <div class="Profile_Info">
+    <p>Username: <span><a href="#">@Model.Username</a></span></p>
+    <p>Email: <span><a href="#">@Model.Email</a></span></p>
+    <p>Photos uploaded: <span><a href="#">@Model.PhotosCount</a></span></p>
+    <p>Comments : <span><a href="#">@Model.CommentsCount</a></span></p>
+    </div>
+
+</div>
+
+
+<div class="clearfix"></div>

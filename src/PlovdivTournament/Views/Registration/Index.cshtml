@@ -1,0 +1,39 @@
+﻿@model PlovdivTournament.Web.Models.RegistrationViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<div id="RegWrap">          
+    @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+    {
+    <fieldset>
+        <legend>Register </legend>
+        <p>
+            @Html.TextBoxFor(x => x.Username, new { placeholder = "Username" })
+            @Html.ValidationMessageFor(x => x.Username)
+        </p>
+        <p>
+            @Html.PasswordFor(x => x.Password, new { placeholder = "Password" })
+            @Html.ValidationMessageFor(x => x.Password)
+        </p>
+        <p>
+            @Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "Confirm Password" })
+            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.Email, new { placeholder = "E-mail" })
+            @Html.ValidationMessageFor(x => x.Email)
+        </p>
+        <div class="clearfix">
+        </div>
+        @Html.ValidationMessage("Unique")
+        <input type="submit" value="Register" />
+        <div class="clearfix">
+        </div>
+    </fieldset>
+    }
+
+</div>	
+<div class="clearfix"></div>

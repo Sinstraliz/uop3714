@@ -1,0 +1,184 @@
+body{
+	background-color:#f9f9f9;
+}
+.clearfix {
+	clear:both;
+}
+h2{
+	font-size:80px;
+	font-family:'roboto';
+	color:#ff3e3e;
+}
+
+
+
+@font-face {
+    font-family: 'roboto';
+    src: url('../fonts/roboto-regular-webfont.eot');
+    src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto-regular-webfont.woff') format('woff'),
+         url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
+         url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#wrapper {
+	width:1000px;
+	margin:0 auto;
+	background-color:#F9f9f9;
+	
+}
+header{
+	border-bottom: 1px solid #aaaaaa;
+}
+.logo {
+	float:left;
+	margin:20px 0px 20px	20px ;
+}
+nav {
+	float:left;
+	margin:95px 0px 0px 90px;
+}
+nav ul {
+	
+	list-style-type:none;
+	display:inline;
+	
+	}
+nav li {
+	
+	padding:0px 0px 0px 35px;
+	list-style-type:none;
+	display:inline;
+	float:left;
+	}	
+nav li a {
+	font-family:'Roboto';
+	text-decoration:none;
+	color:#000;
+	font-size:24px;
+	text-transform:uppercase;
+	
+}
+nav li a:hover {
+	font-family:'Roboto';
+	
+	padding:3px 0px 0px 0px;
+	color:#ff3e3e;
+	
+}
+
+
+
+nav ul ul{
+	display:none;
+	margin-top:0px;
+	position:absolute;
+	padding:0px;
+	
+	
+	
+	
+}
+nav ul li ul li {
+	margin:0px;
+	padding:25px 0px 10px 10px;
+}
+nav  li:hover > ul{
+display:block;
+padding:0px;
+width:210px;
+border-top:3px solid #ff3e3e;
+background:#f9f9f9;
+
+
+}
+nav  li:hover > ul li a {
+	float:left;
+	padding:10px 0px 5px 0px;
+
+}
+#WhenWhere{
+	margin:20px 0px 0px 0px;
+	border-bottom: 1px solid #aaaaaa;
+	background-image:url("../imgs/Tepeta.png");
+	 background-repeat:no-repeat;
+	 background-position:230px 50px ;
+}
+
+#When{
+	float:left;
+}
+#When p{
+	width:700px;
+		font-size:32px;
+}
+#Where{
+	padding:20px 0px 0px 0px;
+	float:right;
+}
+#Where p{
+	font-size:32px;
+}
+#Where h2{
+	float:right;
+}
+#FastReg{
+	padding:20px 0px 20px 0px;
+}
+#FastReg p {
+	font-size:32px;
+}
+#FastReg a {
+	text-decoration:none;
+	font-size:80px;
+		color:#ff3e3e;
+}
+#FastReg a :hover{
+	text-decoration:underline;
+}
+#Partners{
+	background-color:#fff;
+	border-bottom: 1px solid #aaaaaa;
+}
+#Partners h3{
+	padding:20px 0px 0px 30px;
+	font-size:64px;
+	color:#ff3e3e;
+}
+#PartnerImg{
+	padding: 40px 0px 20px 0px;
+}
+#PartnerImg img{
+	margin:0px 0px 0px 60px;
+}
+#SocialWrap{
+	float:right;
+	padding:30px 20px 0px 0px;
+}
+
+
+
+
+
+
+
+
+.PageCaption h1{
+	font-size:40px;
+	color:#ff3e3e;
+	font-family:'Roboto';
+}
+.Item{
+	padding:30px 0px 0px 0px;
+}
+.Item  input[type=text]{
+	margin:2px;
+}
+.Item select {
+	margin:2px;
+}
+form {
+	padding:0px 0px 0px 100px;
+}
