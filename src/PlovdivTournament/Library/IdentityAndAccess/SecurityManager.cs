@@ -37,13 +37,13 @@ namespace PlovdivTournament.Web.Library.IdentityAndAccess
             Session = session;
         }
 
-        public void AuthenticateUser(String username, String password)
+        public void AuthenticateUser(String email, String password)
         {
-            User user = Session.Query<User>().Where(x => x.Username == username && x.Password == password).SingleOrDefault();
+            User user = Session.Query<User>().Where(x => x.Email == email && x.Password == password).SingleOrDefault();
 
             if (user != null)
             {
-                UserInfo userInfo = new UserInfo(user.Id, user.Username, user.Email, user.IsAdmin);
+                UserInfo userInfo = new UserInfo(user.Id, user.Email, user.IsAdmin);
 
                 if (authenticatedUsers.ContainsKey(HttpContext.Current.Session.SessionID))
                     authenticatedUsers[HttpContext.Current.Session.SessionID] = userInfo;

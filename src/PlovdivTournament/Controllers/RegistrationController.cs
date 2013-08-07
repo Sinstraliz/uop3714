@@ -28,7 +28,7 @@ namespace PlovdivTournament.Web.Controllers
                 return View("Index", model);
             }
 
-            var user = Session.Query<User>().Where(x => x.Username == model.Username || x.Email == model.Email).FirstOrDefault();
+            var user = Session.Query<User>().Where(x => x.Email == model.Email).FirstOrDefault();
 
             if (user != null)
             {
@@ -36,7 +36,7 @@ namespace PlovdivTournament.Web.Controllers
                 return View("Index", model);
             }
 
-            var newUser = new User(Guid.NewGuid(), model.Username, model.Password, model.Email, model.FirstName, model.MiddleName, model.LastName, model.EGN, model.Phone, model.Fax);
+            var newUser = new User(Guid.NewGuid(), model.Password, model.Email, model.FirstName, model.MiddleName, model.LastName, model.EGN, model.Phone, model.Fax);
             newUser.Avatar = Session.Load<Avatar>(Avatar.DefaultAvatarId);
             Session.Save(newUser);
 

@@ -27,7 +27,7 @@ namespace PlovdivTournament.Web.Controllers
             if (avatar == null)
                 avatar = Session.Load<Avatar>(Avatar.DefaultAvatarId);
 
-            var model = new ProfileViewModel(avatar, currentUser.Username, currentUser.Email, photosCount, videosCount, commentsCount);
+            var model = new ProfileViewModel(avatar, currentUser.Email, photosCount, videosCount, commentsCount);
 
             return View(model);
         }
@@ -43,7 +43,7 @@ namespace PlovdivTournament.Web.Controllers
             if (avatar == null)
                 avatar = Session.Load<Avatar>(Avatar.DefaultAvatarId);
 
-            var model = new ProfileViewModel(avatar, currentUser.Username, currentUser.Email, photosCount, videosCount, commentsCount);
+            var model = new ProfileViewModel(avatar, currentUser.Email, photosCount, videosCount, commentsCount);
 
             return View(model);
         }
@@ -99,7 +99,7 @@ namespace PlovdivTournament.Web.Controllers
             }
 
             SecurityManager.Logout();
-            SecurityManager.AuthenticateUser(currentUser.Username, currentUser.Password);
+            SecurityManager.AuthenticateUser(currentUser.Email, currentUser.Password);
 
             return RedirectToAction("Index");
         }

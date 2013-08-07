@@ -4,10 +4,9 @@ namespace PlovdivTournament.Web.Models
 {
     public class ProfileViewModel : MasterViewModel
     {
-        public ProfileViewModel(Image avatar, string username, string email, int photosCount, int videosCount, int commentsCount)
+        public ProfileViewModel(Image avatar, string email, int photosCount, int videosCount, int commentsCount)
         {
             Avatar = avatar;
-            Username = username;
             Email = email;
             PhotosCount = photosCount;
             VideosCount = videosCount;
@@ -15,8 +14,6 @@ namespace PlovdivTournament.Web.Models
         }
 
         public Image Avatar { get; set; }
-
-        public string Username { get; set; }
 
         public string Email { get; set; }
 
