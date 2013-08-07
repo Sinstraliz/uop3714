@@ -23,7 +23,7 @@ namespace PlovdivTournament.Web.Controllers
             this.TryUpdateModel(model);
             if (this.ModelState.IsValid)
             {
-                MvcApplication.SecurityManager.AuthenticateUser(model.LoginUserName, model.LoginPassword);
+                MvcApplication.SecurityManager.AuthenticateUser(model.LoginEmail, model.LoginPassword);
             }
 
             return RedirectToAction("Index", "Home");

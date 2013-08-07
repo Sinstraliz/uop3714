@@ -10,7 +10,7 @@ namespace PlovdivTournament.Web.Models
         }
 
         [Required(ErrorMessage = "Username is required")]
-        public string LoginUserName { get; set; }
+        public string LoginEmail { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         public string LoginPassword { get; set; }

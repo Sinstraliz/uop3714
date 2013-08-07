@@ -42,7 +42,7 @@ namespace MyPhoto.Tools.DatabaseTool
                 session.BeginTransaction();
                 //Insert Default Entities in the DB From her
 
-                var admin = new User(adminId, "admin", "123qwe", "noreply@MyPhoto.com", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD");
+                var admin = new User(adminId, "123qwe", "admin@admin.com", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD");
                 session.Save(admin);
                 session.Flush();
                 admin.IsAdmin = true;
