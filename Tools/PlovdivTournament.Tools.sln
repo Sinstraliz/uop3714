@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhoto.Tools.DatabaseTool", "MyPhoto.Tools.DatabaseTool\MyPhoto.Tools.DatabaseTool.csproj", "{69B608BE-F6E7-4D32-AAA1-08BC4328E416}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlovdivTournament.Tools.DatabaseTool", "PlovdivTournament.Tools.DatabaseTool\PlovdivTournament.Tools.DatabaseTool.csproj", "{69B608BE-F6E7-4D32-AAA1-08BC4328E416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

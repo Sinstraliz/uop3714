@@ -34,26 +34,25 @@ namespace MyPhoto.Tools.DatabaseTool
             }).ExposeConfiguration(cfg => new SchemaExport(cfg)
                                               .Execute(false, true, false))
           .BuildConfiguration();
-
+            Console.WriteLine("Database Built");
+            Console.WriteLine("Inserting default entities");
             var sessionFactory = nHibernateConfigFluent.BuildSessionFactory();
             using (var session = sessionFactory.OpenSession())
             {
                 session.BeginTransaction();
                 //Insert Default Entities in the DB From her
 
-                byte[] avatarBytes = File.ReadAllBytes("defaultavatar.png");
                 var admin = new User(adminId, "admin", "123qwe", "noreply@MyPhoto.com", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD");
-                var avatar = new Avatar(Avatar.DefaultAvatarId, avatarBytes, admin, DateTime.Now, "image/png");
                 session.Save(admin);
                 session.Flush();
-                session.Save(avatar);
-                admin.Avatar = avatar;
                 admin.IsAdmin = true;
 
 
                 session.Transaction.Commit();
             }
             sessionFactory.Close();
+            Console.WriteLine("END :Inserting default entities");
+
         }
     }
 }
