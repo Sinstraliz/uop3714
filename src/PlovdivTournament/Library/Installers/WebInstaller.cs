@@ -18,23 +18,28 @@ namespace PlovdivTournament.Web.Library.Installers
     public class WebInstaller : IWindsorInstaller
     {
         IWindsorContainer container;
-
+        Assembly[] assembmliesContaingingControllesrs;
+        public WebInstaller(params Assembly[] assembmliesContaingingControllesrs)
+        {
+            this.assembmliesContaingingControllesrs = assembmliesContaingingControllesrs;
+        }
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             this.container = container;
-
-            var controllers = Assembly.GetAssembly(typeof(WebInstaller)).GetTypes().Where(x => typeof(Controller).IsAssignableFrom(x));
-            foreach (Type controller in controllers)
+            foreach (Assembly asm in assembmliesContaingingControllesrs)
             {
-                container.Register(Component.For(controller).LifeStyle.Transient);
+                var controllers = asm.GetTypes().Where(x => typeof(Controller).IsAssignableFrom(x));
+                foreach (Type controller in controllers)
+                {
+                    container.Register(Component.For(controller).LifeStyle.Transient);
+                }
             }
-
             container.Register(
-                Component.For<SecurityManager>().LifeStyle.PerWebRequest,
+                Component.For<SecurityManager>().LifeStyle.PerWebRequest/*,
                 Component.For<ISessionFactory>().UsingFactoryMethod(x => BuildSessionFactory()).LifeStyle.Singleton,
                 Component.For<ISession>()
                     .UsingFactoryMethod(x => OpenSession()).LifeStyle.PerWebRequest
-                    .OnDestroy(x => CloseSession(x))
+                    .OnDestroy(x => CloseSession(x))*/
                     );
         }
 

@@ -4,16 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PlovdivTournament.Web.Controllers
+namespace PlovdivTournament.Web.Manage.Controllers
 {
-    public class AdminController : Controller
+    public class asdController : Controller
     {
         //
-        // GET: /Admin/
+        // GET: /asd/
 
         public ActionResult Index()
         {
-
             return View();
         }
 

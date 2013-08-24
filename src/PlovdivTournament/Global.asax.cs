@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Reflection;
 
 namespace PlovdivTournament.Web
 {
@@ -19,8 +20,10 @@ namespace PlovdivTournament.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
             MvcApplication.Container = new WindsorContainer();
-            MvcApplication.Container.Install(new WebInstaller());
+            MvcApplication.Container.Install(new WebInstaller(Assembly.GetAssembly(typeof(MvcApplication)),
+                Assembly.GetAssembly(typeof(PlovdivTournament.Web.Manage.Controllers.HomeController))));
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

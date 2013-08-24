@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlovdivTournament.Web", "PlovdivTournament\PlovdivTournament.Web.csproj", "{7C90C30E-6BA4-4492-99B4-F1ED08CE99AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlovdivTournament.Entities", "PlovdivTournament.Entities\PlovdivTournament.Entities.csproj", "{63351C99-DEAD-4AD5-8FBA-FD786FC61282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlovdivTournament.Web.Manage", "PlovdivTournament\Areas\Manage\PlovdivTournament.Web.Manage.csproj", "{E2A51619-4A56-4EEE-826C-066B0500E203}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{63351C99-DEAD-4AD5-8FBA-FD786FC61282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63351C99-DEAD-4AD5-8FBA-FD786FC61282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63351C99-DEAD-4AD5-8FBA-FD786FC61282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A51619-4A56-4EEE-826C-066B0500E203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A51619-4A56-4EEE-826C-066B0500E203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A51619-4A56-4EEE-826C-066B0500E203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A51619-4A56-4EEE-826C-066B0500E203}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
