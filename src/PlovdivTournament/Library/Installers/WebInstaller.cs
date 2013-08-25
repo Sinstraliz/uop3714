@@ -35,11 +35,11 @@ namespace PlovdivTournament.Web.Library.Installers
                 }
             }
             container.Register(
-                Component.For<SecurityManager>().LifeStyle.PerWebRequest/*,
+                Component.For<SecurityManager>().LifeStyle.PerWebRequest,
                 Component.For<ISessionFactory>().UsingFactoryMethod(x => BuildSessionFactory()).LifeStyle.Singleton,
                 Component.For<ISession>()
                     .UsingFactoryMethod(x => OpenSession()).LifeStyle.PerWebRequest
-                    .OnDestroy(x => CloseSession(x))*/
+                    .OnDestroy(x => CloseSession(x))
                     );
         }
 
