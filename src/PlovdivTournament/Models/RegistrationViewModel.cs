@@ -5,9 +5,6 @@ namespace PlovdivTournament.Web.Models
 {
     public class RegistrationViewModel : MasterViewModel
     {
-        [Required(ErrorMessage = "The Username field is required.")]
-        public string Username { get; set; }
-
         [Required(ErrorMessage = "The Password field is required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
@@ -37,5 +34,27 @@ namespace PlovdivTournament.Web.Models
         public string Phone { get; set; }
 
         public string Fax { get; set; }
+
+        [Required(ErrorMessage = "The country field is required.")]
+        public string Country { get; set; }
+
+        [Required(ErrorMessage = "The city field is required.")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "The state field is required.")]
+        public string State { get; set; }
+
+        [Required(ErrorMessage = "The zip field is required.")]
+        public string Zip { get; set; }
+
+        [Required(ErrorMessage = "The street field is required.")]
+        public string DeliveryLine { get; set; }
+
+        [Required(ErrorMessage = "The club name field is required.")]
+        public string ClubName { get; set; }
+
+        public string ClubInfo { get; set; }
+
+        public bool IsSubscribedForNewsFeed { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace PlovdivTournament.Web.Library.Attributes
     {
         public override void OnException(ExceptionContext filterContext)
         {
-
+            base.OnException(filterContext);
         }
     }
 }

@@ -19,6 +19,12 @@ namespace PlovdivTournament.Web
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "PlovdivTournament.Web.Controllers" }
             );
+            routes.MapRoute(
+                name: "Club",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Club", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "PlovdivTournament.Web.Controllers" }
+            );
         }
     }
 }

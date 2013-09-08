@@ -1,0 +1,11 @@
+﻿@model PlovdivTournament.Web.Models.MasterViewModel
+
+@if (Model.UserIsAuthenticated)
+{ 
+	<div class="user_nav">
+		<ul>
+			<li><a href=@String.Format("Club/?owner={0}",Model.CurrentUser.Id)>Моят Клуб</a></li>
+			<li><a href="/Profile">Профил</a></li>
+		</ul>
+	</div>
+}

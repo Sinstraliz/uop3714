@@ -55,7 +55,6 @@
     <Compile Include="Entity\Group.cs" />
     <Compile Include="Entity\Participant.cs" />
     <Compile Include="Entity\Tournament.cs" />
-    <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Image.cs" />
     <Compile Include="Entity\Like.cs" />
     <Compile Include="Entity\Photo.cs" />

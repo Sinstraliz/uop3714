@@ -1,10 +1,7 @@
 ﻿using NHibernate;
 using PlovdivTournament.Web.Models;
 using System.Web.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using NHibernate.Linq;
-using PlovdivTournament.Entities.Entity;
+
 namespace PlovdivTournament.Web.Controllers
 {
     public class HomeController : Controller
@@ -14,7 +11,9 @@ namespace PlovdivTournament.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+
+            return View(model);
         }
 
         [HttpPost]

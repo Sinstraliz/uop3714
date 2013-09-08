@@ -7,6 +7,16 @@ namespace PlovdivTournament.Entities.Entity
     {
         public Participant() { }
 
+        public Participant(string firstName, string middleName, string lastName, string eGN, string licenceNumber, Club club)
+        {
+            FirstName = firstName;
+            MiddleName = middleName;
+            LastName = lastName;
+            EGN = eGN;
+            LicenceNumber = licenceNumber;
+            Club = club;
+        }
+
         public virtual Guid Id { get; protected set; }
 
         public virtual string FirstName { get; set; }

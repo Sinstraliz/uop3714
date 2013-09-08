@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
 using System;
-using System.Collections.Generic;
 
 namespace PlovdivTournament.Entities.Entity
 {
@@ -8,11 +7,10 @@ namespace PlovdivTournament.Entities.Entity
     {
         protected Video()
         {
-            Likes = new List<Like>();
-            Comments = new List<Comment>();
+
         }
 
-        public Video(Guid id, string url, string title, string description, User owner, DateTime dateCreated, string category, bool enableComments)
+        public Video(Guid id, string url, string title, string description, User owner, DateTime dateCreated, string category, Image cover)
         {
             Id = id;
             Url = url;
@@ -20,9 +18,8 @@ namespace PlovdivTournament.Entities.Entity
             Description = description;
             Owner = owner;
             DateCreated = dateCreated;
-            Likes = new List<Like>();
             Category = category;
-            EnableComments = enableComments;
+            Cover = cover;
         }
 
         public virtual Guid Id { get; set; }
@@ -37,13 +34,9 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual string Description { get; set; }
 
-        public virtual IList<Like> Likes { get; set; }
-
-        public virtual IList<Comment> Comments { get; protected set; }
-
-        public virtual bool EnableComments { get; set; }
-
         public virtual string Category { get; set; }
+
+        public virtual Image Cover { get; set; }
     }
 
     public class VideoMap : ClassMap<Video>
@@ -57,10 +50,8 @@ namespace PlovdivTournament.Entities.Entity
             References(x => x.Owner, "Owner_Id");
             Map(x => x.Title, "Title");
             Map(x => x.Description, "Description").Length(4001);
-            HasMany(x => x.Likes).Cascade.AllDeleteOrphan();
-            HasMany(x => x.Comments).Cascade.AllDeleteOrphan();
             Map(x => x.Category, "Category");
-            Map(x => x.EnableComments);
+            References(x => x.Cover, "Cover_Id");
         }
     }
 }

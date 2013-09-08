@@ -22,8 +22,7 @@ namespace PlovdivTournament.Web
             AreaRegistration.RegisterAllAreas();
 
             MvcApplication.Container = new WindsorContainer();
-            MvcApplication.Container.Install(new WebInstaller(Assembly.GetAssembly(typeof(MvcApplication)),
-                Assembly.GetAssembly(typeof(PlovdivTournament.Web.Manage.Controllers.HomeController))));
+            MvcApplication.Container.Install(new WebInstaller(Assembly.GetAssembly(typeof(MvcApplication)), Assembly.GetAssembly(typeof(PlovdivTournament.Web.Manage.Controllers.HomeController))));
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

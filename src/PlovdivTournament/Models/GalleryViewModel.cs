@@ -14,6 +14,10 @@ namespace PlovdivTournament.Web.Models
 
         public int MaxPages { get; set; }
 
+        public Photo Photo { get; set; }
+
+        public Video Video { get; set; }
+
         public List<Photo> AllPhotos { get; set; }
 
         public List<Video> AllVideos { get; set; }

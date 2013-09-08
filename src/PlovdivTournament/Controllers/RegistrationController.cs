@@ -32,12 +32,15 @@ namespace PlovdivTournament.Web.Controllers
 
             if (user != null)
             {
-                ModelState.AddModelError("Unique", "Username and e-mail must be unique.");
+                ModelState.AddModelError("Unique", "There is already a user with that e-mail.");
+
                 return View("Index", model);
             }
 
-            var newUser = new User(Guid.NewGuid(), model.Password, model.Email, model.FirstName, model.MiddleName, model.LastName, model.EGN, model.Phone, model.Fax);
-            newUser.Avatar = Session.Load<Avatar>(Avatar.DefaultAvatarId);
+            var newUser = new User(Guid.NewGuid(), model.Email, model.Password, model.FirstName, model.MiddleName, model.LastName, model.EGN, model.Phone, model.Fax, model.IsSubscribedForNewsFeed);
+            //newUser.Avatar = Session.Load<Avatar>(Avatar.DefaultAvatarId);
+            newUser.Address = new Address(model.Country, model.City, model.State, model.Zip, model.DeliveryLine, newUser);
+            newUser.Club = new Club(model.ClubName, model.ClubInfo, newUser);
             Session.Save(newUser);
 
             return RedirectToAction("Index", "Home");

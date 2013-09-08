@@ -1,11 +1,10 @@
-﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using System.IO;
 using PlovdivTournament.Entities;
 using PlovdivTournament.Entities.Entity;
+using System;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace MyPhoto.Tools.DatabaseTool
 {
@@ -42,11 +41,15 @@ namespace MyPhoto.Tools.DatabaseTool
                 session.BeginTransaction();
                 //Insert Default Entities in the DB From her
 
-                var admin = new User(adminId, "123qwe", "admin@admin.com", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD");
+                var admin = new User(adminId, "admin", "admin", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD", true);
+                var address = new Address("Bulgaria", "Plovdiv", "Plovdiv", "4000", "Petyr Shilev 14", admin);
+                admin.Address = address;
+                var club = new Club("Samodiva", "Some info", admin);
+                admin.Club = club;
+                admin.IsAdmin = true;
+                admin.IsActive = true;
                 session.Save(admin);
                 session.Flush();
-                admin.IsAdmin = true;
-
 
                 session.Transaction.Commit();
             }

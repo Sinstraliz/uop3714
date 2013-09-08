@@ -2,11 +2,14 @@
 using System;
 using System.Linq;
 using System.Web;
+using System.Collections.Generic;
 
 namespace PlovdivTournament.Web.Models
 {
     public class MasterViewModel
     {
+        public string Error { get; set; }
+
         public bool UserIsAuthenticated { get { return MvcApplication.SecurityManager.AuthenticatedUser != null; } }
 
         public UserInfo CurrentUser { get { return MvcApplication.SecurityManager.AuthenticatedUser; } }

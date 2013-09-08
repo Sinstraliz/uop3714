@@ -125,7 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -135,12 +135,12 @@
     </Compile>
     <Compile Include="Library\ContentType\MimeMapping.cs" />
     <Compile Include="Library\ControllerFactory\ControllerFactory.cs" />
-    <Compile Include="Library\IdentityAndAccess\UserInfo.cs" />
-    <Compile Include="Library\IdentityAndAccess\SecurityManager.cs" />
     <Compile Include="Library\Utility\ImageUtility.cs" />
     <Compile Include="Library\Installers\WebInstaller.cs" />
     <Compile Include="Library\Utility\ExcelUtility.cs" />
     <Compile Include="Library\Attributes\ExceptionHandlingAttribute.cs" />
+    <Compile Include="Models\ClubViewModel.cs" />
+    <Compile Include="Models\EditClubViewModel.cs" />
     <Compile Include="Models\EditProfileViewModel.cs" />
     <Compile Include="Models\GalleryViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
@@ -200,9 +200,6 @@
     <Content Include="Resources\fonts\roboto-regular-webfont.woff" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Registration\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Gallery\Videos.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +210,39 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Profile\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Registration\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\Photos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\LoginPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\UserNavigationPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Club\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Club\Preview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\Preview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\PartialViews\CategoryNavigationPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Profile\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Club\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Club\PartialViews\MembersPartialView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -230,7 +260,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5172</DevelopmentServerPort>
+          <DevelopmentServerPort>23640</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:14798/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

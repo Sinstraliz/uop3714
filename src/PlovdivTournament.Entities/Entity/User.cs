@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
 using System;
-using System.Collections.Generic;
 
 namespace PlovdivTournament.Entities.Entity
 {
@@ -8,7 +7,7 @@ namespace PlovdivTournament.Entities.Entity
     {
         protected User() { }
 
-        public User(Guid id, string password, string email, string firstName, string middleName, string lastName, string egn, string phone, string fax)
+        public User(Guid id, string email, string password, string firstName, string middleName, string lastName, string eGN, string phone, string fax, bool isSubscribedForNewsFeed)
         {
             Id = id;
             Email = email;
@@ -16,12 +15,10 @@ namespace PlovdivTournament.Entities.Entity
             FirstName = firstName;
             MiddleName = middleName;
             LastName = lastName;
-            EGN = egn;
+            EGN = eGN;
             Phone = phone;
             Fax = fax;
-            IsChoreographer = false;
-            IsAdmin = false;
-            IsActive = true;
+            IsSubscribedForNewsFeed = isSubscribedForNewsFeed;
         }
 
         public virtual Guid Id { get; protected set; }
@@ -55,8 +52,6 @@ namespace PlovdivTournament.Entities.Entity
         public virtual bool IsActive { get; set; }
 
         public virtual bool IsSubscribedForNewsFeed { get; set; }
-
-        public virtual IList<Like> Likes { get; set; }
     }
 
     public class UserMap : ClassMap<User>
@@ -77,7 +72,6 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.IsActive, "Is_Active");
             Map(x => x.IsAdmin, "Is_Admin");
             Map(x => x.IsSubscribedForNewsFeed, "Is_Subscribed_For_News_Feed");
-            HasMany(x => x.Likes).Cascade.AllDeleteOrphan();
             References(x => x.Avatar, "Avatar_Id").Nullable().Cascade.All();
             References(x => x.Address, "Address_Id").Cascade.All();
             References(x => x.Club, "Club_Id").Cascade.All();

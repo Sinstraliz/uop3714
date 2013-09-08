@@ -1,0 +1,25 @@
+﻿@model PlovdivTournament.Web.Models.ClubViewModel
+
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<div id="ClubWrap">
+    <div class="clearfix"></div>
+    <fieldset class="Club_Info">
+        <p>Club Name: <span><a href="#">@Model.ClubName</a></span></p>
+        <p>Club Info: <span><a href="#">@Model.Info</a></span></p>
+        <p><a href="Profile/Preview?@Model.Owner.Id">Owner</a></p>
+
+        <legend>Address Info</legend>
+
+        <p>Delivery Line: <span><a href="#">@Model.Owner.Address.DeliveryLine</a></span></p>
+        <p>City: <span><a href="#">@Model.Owner.Address.City</a></span></p>
+        <p>State: <span><a href="#">@Model.Owner.Address.State</a></span></p>
+        <p>Zip: <span><a href="#">@Model.Owner.Address.Zip</a></span></p>
+        <p>Country: <span><a href="#">@Model.Owner.Address.Country</a></span></p>
+    </fieldset>
+</div>
+
+<div class="clearfix"></div>

@@ -8,6 +8,14 @@ namespace PlovdivTournament.Entities.Entity
     {
         public Club() { }
 
+        public Club(string name, string info, User owner)
+        {
+            Name = name;
+            Info = info;
+            Owner = owner;
+            Members = new List<Participant>();
+        }
+
         public virtual Guid Id { get; set; }
 
         public virtual string Name { get; set; }
