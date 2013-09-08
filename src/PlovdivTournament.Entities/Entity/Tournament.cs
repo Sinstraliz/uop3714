@@ -6,7 +6,10 @@ namespace PlovdivTournament.Entities.Entity
 {
     public class Tournament
     {
-        public Tournament() { }
+        public Tournament()
+        {
+            Disciplines = new List<Discipline>();
+        }
 
         public Tournament(Guid id, string name, string place, DateTime startDate, DateTime endDate)
         {
@@ -23,6 +26,8 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual string Place { get; set; }
 
+        public virtual bool IsActive { get; set; }
+
         public virtual DateTime StartDate { get; set; }
 
         public virtual DateTime EndDate { get; set; }
@@ -38,6 +43,7 @@ namespace PlovdivTournament.Entities.Entity
             Id(x => x.Id, "Tournament_Id");
             Map(x => x.Name, "Name");
             Map(x => x.Place, "Place");
+            Map(x => x.IsActive, "active");
             Map(x => x.StartDate, "Start_Date");
             Map(x => x.EndDate, "End_Date");
             HasMany(x => x.Disciplines).Cascade.AllDeleteOrphan();

@@ -128,6 +128,7 @@
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +145,7 @@
     <Compile Include="Models\EditProfileViewModel.cs" />
     <Compile Include="Models\GalleryViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\HtmlContentModel.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RegistrationViewModel.cs" />
@@ -151,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Resources\css\admin.css" />
     <Content Include="Resources\css\reset.css" />
     <Content Include="Resources\css\style.css" />
     <Content Include="Resources\fonts\roboto-regular-webfont.svg" />
@@ -243,6 +246,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Club\PartialViews\MembersPartialView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Fest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Program.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Taxes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Evaluation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Referees.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
