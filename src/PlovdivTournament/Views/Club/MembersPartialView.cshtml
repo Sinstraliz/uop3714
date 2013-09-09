@@ -1,0 +1,103 @@
+﻿@model PlovdivTournament.Web.Models.EditClubViewModel
+
+<script type="text/javascript">
+    function RemoveMember(memberId) {
+        document.getElementById(memberId).style.display = "none";
+        document.getElementById(memberId).style.height = "0px";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Club/RemoveMember',
+            data: { memberId: memberId },
+            context: document.body,
+            success: function (data) {
+                $('#MembersWrap').html(data);
+            }
+        });
+    };
+
+    function AddMember() {
+        var firstName = $('#FirstName').val();
+        var middleName = $('#MiddleName').val();
+        var lastName = $('#LastName').val();
+        var egn = $('#EGN').val();
+        var licenceNumber = $('#LicenceNumber').val();
+
+        if (firstName.trim() === '') {
+            alert('First name is required!');
+
+            return false;
+        }
+
+        if (middleName.trim() === '') {
+            alert('Middle name is required!');
+
+            return false;
+        }
+
+        if (lastName.trim() === '') {
+            alert('Last name is required!');
+
+            return false;
+        }
+
+        if (egn.trim() === '') {
+            alert('EGN is required!');
+
+            return false;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/Club/AddMember',
+            data: { firstName: firstName, middleName: middleName, lastName: lastName, egn: egn, licenceNumber: licenceNumber },
+            dataType: 'html',
+            success: function (data) {
+                $('#FirstName').val('');
+                $('#MiddleName').val('');
+                $('#LastName').val('');
+                $('#EGN').val('');
+                $('#LicenceNumber').val('');
+                $('#MembersWrap').html(data);
+                location.reload(true);  //remove this when the ajax refreshes properly the view
+            }
+        });
+    };
+</script>
+
+<div class="AddMemberSection">
+    <fieldset>
+        <legend>New member</legend>
+       
+        <p> <label>First Name:</label> <input name="FirstName" type="textarea" value="@Model.FirstName" id="FirstName"/> </p>
+        <p> <label>Middle Name:</label> <input name="MiddleName" type="textarea" value="@Model.MiddleName"  id="MiddleName"/> </p>
+        <p> <label>Last Name:</label> <input name="LastName" type="textarea" value="@Model.LastName"  id="LastName"/> </p>
+        <p> <label>EGN:</label> <input name="EGN" type="textarea" value="@Model.EGN"  id="EGN"/> </p>
+        <p> <label>Licence number:</label> <input name="LicenceNumber" type="textarea" value="@Model.LicenceNumber"  id="LicenceNumber"/> </p>
+
+        <p><a href="#" onclick="AddMember(); return false">Add</a></p>
+    </fieldset>
+</div>
+@if (!string.IsNullOrEmpty(Model.Error))
+{ 
+    <div class="ErrorMessage">
+        <p>@Model.Error</p>
+    </div>
+}
+<div class="CurrentMembersSection">
+    @foreach (var member in Model.Members)
+    {
+        <div class="member" id="@member.Id">
+            <span>Name: @member.FirstName</span>
+            <span>Middle Name: @member.MiddleName</span>
+            <span>Last Name: @member.LastName</span>
+            <span>EGN: @member.EGN</span>
+            <span>Licence number: @member.LicenceNumber</span>
+
+            @if (Model.CurrentUser!=null&&( Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Owner.Id))
+            { 
+                <a href="#" onclick="RemoveMember('@member.Id'); return false" id="Delete_Member"><img src="/Resources/imgs/delete.png" alt="like" /> </a>
+            }
+        </div>
+    }
+</div>

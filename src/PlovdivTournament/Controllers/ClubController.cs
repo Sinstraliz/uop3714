@@ -2,10 +2,12 @@
 using NHibernate.Linq;
 using PlovdivTournament.Entities.Entity;
 using PlovdivTournament.Web.Library.IdentityAndAccess;
+using PlovdivTournament.Web.Library.ExtensionMethods;
 using PlovdivTournament.Web.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace PlovdivTournament.Web.Controllers
 {
@@ -44,6 +46,7 @@ namespace PlovdivTournament.Web.Controllers
             model.ClubName = currentUser.Club.Name;
             model.Info = currentUser.Club.Info;
             model.Members = currentUser.Club.Members.ToList();
+            model.Owner = currentUser;
 
             return View(model);
         }
@@ -61,7 +64,6 @@ namespace PlovdivTournament.Web.Controllers
 
             currentUser.Club.Name = model.ClubName;
             currentUser.Club.Info = model.Info;
-            currentUser.Club.Members = model.Members;
 
             SecurityManager.Logout();
             SecurityManager.AuthenticateUser(currentUser.Email, currentUser.Password);
@@ -78,24 +80,28 @@ namespace PlovdivTournament.Web.Controllers
                 throw new InvalidOperationException();
             }
 
+            //var id = new Guid(memberId);
+
             var member = Session.Query<Participant>().Where(x => x.Id == memberId).FirstOrDefault();
             if (member == null)
             {
                 throw new InvalidOperationException();
             }
 
-            Session.Delete(member);
-
             var model = new EditClubViewModel();
             model.ClubName = user.Club.Name;
             model.Info = user.Club.Info;
             model.Members = user.Club.Members.ToList();
 
+            Session.Delete(member);
+
+            model.Members.Remove(member);
+
             return PartialView("MembersPartialView", model);
         }
 
         [HttpPost]
-        public ActionResult AddMember(string firstName, string middleName, string lastName, string egn, string licenceNumber)
+        public ActionResult AddMember(EditClubViewModel model)
         {
             var user = Session.Query<User>().Where(x => x.Id == SecurityManager.AuthenticatedUser.Id).FirstOrDefault();
             if (user == null)
@@ -103,15 +109,10 @@ namespace PlovdivTournament.Web.Controllers
                 throw new InvalidOperationException();
             }
 
-            if (string.IsNullOrEmpty(licenceNumber))
-                licenceNumber = string.Empty;
+            if (string.IsNullOrEmpty(model.LicenceNumber))
+                model.LicenceNumber = string.Empty;
 
-            var model = new EditClubViewModel();
-            model.ClubName = user.Club.Name;
-            model.Info = user.Club.Info;
-            model.Members = user.Club.Members.ToList();
-
-            var member = Session.Query<Participant>().Where(x => x.EGN == egn).FirstOrDefault();
+            var member = Session.Query<Participant>().Where(x => x.EGN == model.EGN).FirstOrDefault();
 
             if (member != null)
             {
@@ -120,13 +121,16 @@ namespace PlovdivTournament.Web.Controllers
                 return PartialView("MembersPartialView", model);
             }
 
-            member = new Participant(firstName, middleName, lastName, egn, licenceNumber, user.Club);
+            member = new Participant(model.FirstName, model.MiddleName, model.LastName, model.EGN, model.LicenceNumber, user.Club);
 
             Session.Save(member);
 
+            if (model.Members == null)
+                model.Members = new List<Participant>();
+
             model.Members.Add(member);
 
-            return PartialView("/Views/Club/PartialViews/MembersPartialView.cshtml", model);
+            return Json(new Object[] { false, this.RenderPartialViewToString("MembersPartialView", model) });
         }
     }
 }

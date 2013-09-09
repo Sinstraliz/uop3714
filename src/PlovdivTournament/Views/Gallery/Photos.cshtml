@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
 
-@Html.Partial("/Views/Gallery/PartialViews/CategoryNavigationPartialView.cshtml", Model)
+@Html.Partial("CategoryNavigationPartialView", Model)
 
 <div id="column1">
     @for (int i = 0; i <= 3; i++)

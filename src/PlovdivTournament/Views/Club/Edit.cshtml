@@ -4,67 +4,6 @@
     ViewBag.Title = "Club";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-<script type="text/javascript">
-    function RemoveMember(memberId) {
-        document.getElementById(Id).style.display = "none";
-        document.getElementById(Id).style.height = "0px";
-
-        $.ajax({
-            type: 'POST',
-            url: '/Club/RemoveMember',
-            data: { memberId: member },
-            success: function (data) {
-                $('#MembersWrap').html(data);
-            }
-        });
-    }
-
-    function AddMember() {
-        var firstName = $('#FirstName').val();
-        var middleName = $('#MiddleName').val();
-        var lastName = $('#LastName').val();
-        var egn = $('#EGN').val();
-        var licenceNumber = $('#LicenceNumber').val();
-
-        if (firstName.trim() === '') {
-            alert('First name is required!');
-
-            return false;
-        }
-
-        if (middleName.trim() === '') {
-            alert('Middle name is required!');
-
-            return false;
-        }
-
-        if (lastName.trim() === '') {
-            alert('Last name is required!');
-
-            return false;
-        }
-
-        if (egn.trim() === '') {
-            alert('EGN is required!');
-
-            return false;
-        }
-
-        $.ajax({
-            type: 'POST',
-            url: '/Club/AddMember',
-            data: { firstName: firstName, middleName: middleName, lastName: lastName, egn: egn, licenceNumber: licenceNumber },
-            success: function (data) {
-                $('#FirstName').val('');
-                $('#MiddleName').val('');
-                $('#LastName').val('');
-                $('#EGN').val('');
-                $('#LicenceNumber').val('');
-                $('#MembersWrap').html(data);
-            }
-        });
-    }
-</script>
 
 <div id="Change_Club_Wrap">   
     @using (Html.BeginForm("Save", "Club", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -80,10 +19,11 @@
             
             <legend>Change Club Members</legend>
 
-            @Html.Partial("/Views/Club/PartialViews/MembersPartialView.cshtml")
-
             <p><a href="#" onclick="get_form(this).submit(); return false">Save</a></p>
             <div class="clearfix"></div>
         </fieldset>
     }
+    <div class="MembersWrap">
+         @Html.Partial("MembersPartialView")
+    </div>
 </div>	

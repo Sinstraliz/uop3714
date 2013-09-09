@@ -25,5 +25,7 @@ namespace PlovdivTournament.Web.Models
         public string EGN { get; set; }
 
         public string LicenceNumber { get; set; }
+
+        public User Owner { get; set; }
     }
 }

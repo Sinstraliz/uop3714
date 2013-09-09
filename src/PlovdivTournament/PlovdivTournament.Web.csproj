@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Library\ContentType\MimeMapping.cs" />
     <Compile Include="Library\ControllerFactory\ControllerFactory.cs" />
+    <Compile Include="Library\ExtensionMethods\ControllerExtension.cs" />
     <Compile Include="Library\Utility\ImageUtility.cs" />
     <Compile Include="Library\Installers\WebInstaller.cs" />
     <Compile Include="Library\Utility\ExcelUtility.cs" />
@@ -154,6 +155,7 @@
     <Content Include="Resources\css\reset.css" />
     <Content Include="Resources\css\style.css" />
     <Content Include="Resources\fonts\roboto-regular-webfont.svg" />
+    <Content Include="Resources\imgs\delete.png" />
     <Content Include="Resources\imgs\f.png" />
     <Content Include="Resources\imgs\Logo.png" />
     <Content Include="Resources\imgs\partners.png" />
@@ -161,6 +163,24 @@
     <Content Include="Resources\imgs\t.png" />
     <Content Include="Resources\imgs\tepeta.png" />
     <Content Include="Resources\imgs\y.png" />
+    <None Include="Resources\scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Resources\scripts\jquery-1.4.4.js" />
+    <Content Include="Resources\scripts\jquery-1.4.4.min.js" />
+    <Content Include="Resources\scripts\jquery-ui.js" />
+    <Content Include="Resources\scripts\jquery-ui.min.js" />
+    <Content Include="Resources\scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Resources\scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Resources\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Resources\scripts\jquery.validate.js" />
+    <Content Include="Resources\scripts\jquery.validate.min.js" />
+    <Content Include="Resources\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Resources\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Resources\scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Resources\scripts\MicrosoftAjax.js" />
+    <Content Include="Resources\scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Resources\scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Resources\scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Resources\scripts\MicrosoftMvcValidation.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -173,7 +193,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resources\icons\" />
-    <Folder Include="Resources\scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -233,7 +252,7 @@
     <Content Include="Views\Gallery\Preview.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Gallery\PartialViews\CategoryNavigationPartialView.cshtml" />
+    <Content Include="Views\Gallery\CategoryNavigationPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Profile\ChangePassword.cshtml" />
@@ -242,7 +261,7 @@
     <Content Include="Views\Club\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Club\PartialViews\MembersPartialView.cshtml" />
+    <Content Include="Views\Club\MembersPartialView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -260,7 +279,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>23640</DevelopmentServerPort>
+          <DevelopmentServerPort>5505</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:14798/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
