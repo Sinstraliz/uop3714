@@ -58,6 +58,7 @@
     <Compile Include="Entity\Image.cs" />
     <Compile Include="Entity\Like.cs" />
     <Compile Include="Entity\Photo.cs" />
+    <Compile Include="Entity\TournamentInfo.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\Video.cs" />
     <Compile Include="IHaveEntities.cs" />

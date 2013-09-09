@@ -120,18 +120,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\asdController.cs" />
-    <Compile Include="Controllers\ffsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TournamentsController.cs" />
     <Compile Include="Library\IdentityAndAccess\SecurityManager.cs" />
     <Compile Include="Library\IdentityAndAccess\UserInfo.cs" />
     <Compile Include="ManageAreaRegistration.cs" />
+    <Compile Include="Models\TournamentsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -140,16 +138,19 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\asd\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\PlovdivTournament.Entities\PlovdivTournament.Entities.csproj">
       <Project>{63351c99-dead-4ad5-8fba-fd786fc61282}</Project>
       <Name>PlovdivTournament.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ffs\Index.cshtml" />
+    <Content Include="Views\Shared\Admin_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ActiveTournamentPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tournaments\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

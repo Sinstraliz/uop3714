@@ -1,0 +1,97 @@
+﻿@model PlovdivTournament.Web.Manage.Models.TournamentsModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/Admin_Layout.cshtml";
+}
+<table>
+@foreach (var tournament in Model.Tournaments)
+{
+    <tr>
+    <td>@tournament.Name</td>
+    <td>@tournament.Place</td>
+    <td>@tournament.StartDate</td>
+    <td>@tournament.EndDate</td>
+    @if (!tournament.IsActive)
+    {
+    <td><a href="~/Manage/Tournaments/MakeActive?id=@tournament.Id">Make Active</a></td>
+    }
+    else
+    { 
+    <td>Active</td>
+    }
+
+    </tr>
+}
+</table>
+<div>
+Make new Tournament
+       @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+    {
+    <fieldset>
+        <legend>Register</legend>
+        <p>
+            @Html.TextBoxFor(x => x.CurrentTournament.Name, new { placeholder = "Name" })
+           
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.CurrentTournament.Place, new { placeholder = "Place" })
+        </p>
+            @Html.TextBoxFor(x => x.LastName, new { placeholder = "Last Name" })
+            @Html.ValidationMessageFor(x => x.LastName)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.Phone, new { placeholder = "Phone" })
+            @Html.ValidationMessageFor(x => x.Phone)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.Fax, new { placeholder = "Fax" })
+            @Html.ValidationMessageFor(x => x.Fax)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.EGN, new { placeholder = "EGN" })
+            @Html.ValidationMessageFor(x => x.EGN)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.DeliveryLine, new { placeholder = "Delivery Line" })
+            @Html.ValidationMessageFor(x => x.DeliveryLine)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.City, new { placeholder = "City" })
+            @Html.ValidationMessageFor(x => x.City)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.State, new { placeholder = "State" })
+            @Html.ValidationMessageFor(x => x.State)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.Zip, new { placeholder = "Zip" })
+            @Html.ValidationMessageFor(x => x.Zip)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.Country, new { placeholder = "Country" })
+            @Html.ValidationMessageFor(x => x.Country)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.ClubName, new { placeholder = "Club Name" })
+            @Html.ValidationMessageFor(x => x.ClubName)
+        </p>
+        <p>
+            @Html.TextBoxFor(x => x.ClubInfo, new { placeholder = "Club Info" })
+            @Html.ValidationMessageFor(x => x.ClubInfo)
+        </p>
+        <p>
+            <label>Subscribe me for news feed
+                @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed, new { placeholder = "Is Subscribed For News Feed" })
+            </label>
+            @Html.ValidationMessageFor(x => x.IsSubscribedForNewsFeed)
+        </p>
+
+        <div class="clearfix"></div>
+
+        @Html.ValidationMessage("Unique")
+        <input type="submit" value="Register" />
+
+        <div class="clearfix"></div>
+    </fieldset>
+    }
+</div>
