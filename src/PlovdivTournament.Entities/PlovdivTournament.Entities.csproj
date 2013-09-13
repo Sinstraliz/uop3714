@@ -49,6 +49,7 @@
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\AgeGroup.cs" />
     <Compile Include="Entity\Avatar.cs" />
+    <Compile Include="Entity\Content.cs" />
     <Compile Include="Entity\Discipline.cs" />
     <Compile Include="Entity\Club.cs" />
     <Compile Include="Entity\DisciplineRule.cs" />

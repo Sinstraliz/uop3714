@@ -13,14 +13,14 @@ h2{
 
 
 @font-face {
-    font-family: 'roboto';
-    src: url('../fonts/roboto-regular-webfont.eot');
-    src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/roboto-regular-webfont.woff') format('woff'),
-         url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
-         url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'roboto';
+	src: url('../fonts/roboto-regular-webfont.eot');
+	src: url('../fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/roboto-regular-webfont.woff') format('woff'),
+		 url('../fonts/roboto-regular-webfont.ttf') format('truetype'),
+		 url('../fonts/roboto-regular-webfont.svg#robotoregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
 
 }
 #wrapper {
@@ -47,7 +47,6 @@ nav ul {
 	
 	}
 nav li {
-	
 	padding:0px 0px 0px 35px;
 	list-style-type:none;
 	display:inline;
@@ -59,27 +58,19 @@ nav li a {
 	color:#000;
 	font-size:24px;
 	text-transform:uppercase;
-	
 }
 nav li a:hover {
 	font-family:'Roboto';
-	
 	padding:3px 0px 0px 0px;
 	color:#ff3e3e;
 	
 }
-
-
 
 nav ul ul{
 	display:none;
 	margin-top:0px;
 	position:absolute;
 	padding:0px;
-	
-	
-	
-	
 }
 nav ul li ul li {
 	margin:0px;
