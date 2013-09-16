@@ -4,7 +4,9 @@
 	Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
 
-<div id="PlovdivImg">
+@Html.Raw(Model.PageContent)
+
+@*<div id="PlovdivImg">
 	<img src="~/Resources/imgs/Plovdiv.png" alt="LOGO" />
 </div>
 <div id="WhenWhere">
@@ -32,4 +34,4 @@
 		<img src="~/Resources/imgs/Partners.png" alt="LOGO" />
 		<img src="~/Resources/imgs/Partners.png" alt="LOGO" />
 	</div>
-</div>
+</div>*@

@@ -6,13 +6,17 @@
             @Html.ValidationSummary(true)
             @Html.TextBox("LoginEmail", "", new { placeholder = "Email" })
             @Html.Password("LoginPassword", "", new { placeholder = "Password" })
-            <a href="#" onclick="get_form(this).submit(); return false">Login </a> 
-            <span>/ </span> 
-            <a href="/Registration">Register</a>
+            <div class="LoginButtons">
+                <a href="#" id="loginButton" onclick="get_form(this).submit(); return false">Login </a>
+                <span>/ </span>
+                <a href="/Registration">Register</a>
+            </div>
         }
     }
     else
     { 
-        <a href="/Home/Logout">Logout</a>
+        <div>
+            <a href="/Home/Logout">Logout</a>
+        </div>
     }
 </div>

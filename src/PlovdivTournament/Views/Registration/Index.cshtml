@@ -9,6 +9,7 @@
     {
     <fieldset>
         <legend>Register</legend>
+        <div class="RegColumn">
         <p>
             @Html.TextBoxFor(x => x.Email, new { placeholder = "E-mail" })
             @Html.ValidationMessageFor(x => x.Email)
@@ -41,6 +42,8 @@
             @Html.TextBoxFor(x => x.Fax, new { placeholder = "Fax" })
             @Html.ValidationMessageFor(x => x.Fax)
         </p>
+            </div>
+         <div class="RegColumn column2">
         <p>
             @Html.TextBoxFor(x => x.EGN, new { placeholder = "EGN" })
             @Html.ValidationMessageFor(x => x.EGN)
@@ -73,6 +76,7 @@
             @Html.TextBoxFor(x => x.ClubInfo, new { placeholder = "Club Info" })
             @Html.ValidationMessageFor(x => x.ClubInfo)
         </p>
+             </div>
         <p>
             <label>Subscribe me for news feed
                 @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed, new { placeholder = "Is Subscribed For News Feed" })
@@ -83,7 +87,7 @@
         <div class="clearfix"></div>
 
         @Html.ValidationMessage("Unique")
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" class="RegButton"/>
 
         <div class="clearfix"></div>
     </fieldset>

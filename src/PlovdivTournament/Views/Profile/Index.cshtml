@@ -5,12 +5,7 @@
 }
 
 <div id="ProfileWrap">
-    <div class="EditButton">
-        <a href="Profile/Edit">Edit</a>
-    </div>
-    <div class="ChangePasswordButton">
-        <a href="Profile/ChangePassword">Change Password</a>
-    </div>
+ 
     <div class="clearfix"></div>
     <div class="Profile_Photo">
         <img src=@String.Format("Gallery/GetImage/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133) />
@@ -28,7 +23,7 @@
             <p>You are subscribed for news feed</p>
         }
 
-        <legend>Address Info</legend>
+        
 
         <p>Delivery Line: <span><a href="#">@Model.DeliveryLine</a></span></p>
         <p>City: <span><a href="#">@Model.City</a></span></p>
@@ -36,6 +31,12 @@
         <p>Zip: <span><a href="#">@Model.Zip</a></span></p>
         <p>Country: <span><a href="#">@Model.Country</a></span></p>
     </fieldset>
+       <div class="EditButton ProButton">
+        <a href="Profile/Edit">Edit</a>
+    </div>
+    <div class="ChangePasswordButton ProButton ">
+        <a href="Profile/ChangePassword">Change Password</a>
+    </div>
 </div>
 
 <div class="clearfix"></div>

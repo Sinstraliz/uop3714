@@ -11,12 +11,8 @@ using System.Collections.Generic;
 
 namespace PlovdivTournament.Web.Controllers
 {
-    public class ClubController : Controller
+    public class ClubController : MasterController
     {
-        public ISession Session { get; set; }
-
-        public SecurityManager SecurityManager { get; set; }
-
         public ActionResult Index()
         {
             User user = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);

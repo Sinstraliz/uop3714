@@ -75,7 +75,7 @@
         <p> <label>EGN:</label> <input name="EGN" type="textarea" value="@Model.EGN"  id="EGN"/> </p>
         <p> <label>Licence number:</label> <input name="LicenceNumber" type="textarea" value="@Model.LicenceNumber"  id="LicenceNumber"/> </p>
 
-        <p><a href="#" onclick="AddMember(); return false">Add</a></p>
+        <p><a class="RegButton" href="#" onclick="AddMember(); return false">Add</a></p>
     </fieldset>
 </div>
 @if (!string.IsNullOrEmpty(Model.Error))
@@ -96,7 +96,7 @@
 
             @if (Model.CurrentUser!=null&&( Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Owner.Id))
             { 
-                <a href="#" onclick="RemoveMember('@member.Id'); return false" id="Delete_Member"><img src="/Resources/imgs/delete.png" alt="like" /> </a>
+                <a  class="PartialDelete" href="#" onclick="RemoveMember('@member.Id'); return false" id="Delete_Member"><img src="/Resources/imgs/delete.png" alt="like" /> </a>
             }
         </div>
     }

@@ -10,7 +10,7 @@ namespace PlovdivTournament.Entities.Entity
 
         }
 
-        public Video(Guid id, string url, string title, string description, User owner, DateTime dateCreated, string category, Image cover)
+        public Video(Guid id, string url, string title, string description, User owner, DateTime dateCreated, string category, byte[] coverContent, string coverContentType)
         {
             Id = id;
             Url = url;
@@ -19,7 +19,8 @@ namespace PlovdivTournament.Entities.Entity
             Owner = owner;
             DateCreated = dateCreated;
             Category = category;
-            Cover = cover;
+            CoverContentType = coverContentType;
+            CoverContent = coverContent;
         }
 
         public virtual Guid Id { get; set; }
@@ -36,7 +37,9 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual string Category { get; set; }
 
-        public virtual Image Cover { get; set; }
+        public virtual string CoverContentType { get; set; }
+
+        public virtual byte[] CoverContent { get; set; }
     }
 
     public class VideoMap : ClassMap<Video>
@@ -51,7 +54,9 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.Title, "Title");
             Map(x => x.Description, "Description").Length(4001);
             Map(x => x.Category, "Category");
-            References(x => x.Cover, "Cover_Id");
+            Map(x => x.CoverContent, "Cover_Content").CustomSqlType("varbinary(MAX)").Length(3000000).LazyLoad();
+            Map(x => x.CoverContentType, "Cover_Content_Type");
+            DiscriminateSubClassesOnColumn("Image_Type");
         }
     }
 }

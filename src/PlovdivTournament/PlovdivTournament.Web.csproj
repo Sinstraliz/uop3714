@@ -129,7 +129,9 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -137,6 +139,7 @@
     <Compile Include="Library\ContentType\MimeMapping.cs" />
     <Compile Include="Library\ControllerFactory\ControllerFactory.cs" />
     <Compile Include="Library\ExtensionMethods\ControllerExtension.cs" />
+    <Compile Include="Library\Helpers\SelectListHelper.cs" />
     <Compile Include="Library\Utility\ImageUtility.cs" />
     <Compile Include="Library\Installers\WebInstaller.cs" />
     <Compile Include="Library\Utility\ExcelUtility.cs" />
@@ -146,9 +149,9 @@
     <Compile Include="Models\EditProfileViewModel.cs" />
     <Compile Include="Models\GalleryViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
-    <Compile Include="Models\HtmlContentModel.cs" />
     <Compile Include="Models\MasterViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -279,6 +282,15 @@
     <Content Include="Resources\scripts\tinymce\js\tinymce\skins\lightgray\fonts\icomoon.ttf" />
     <Content Include="Resources\scripts\tinymce\js\tinymce\skins\lightgray\fonts\icomoon.woff" />
     <Content Include="Resources\scripts\tinymce\js\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Views\Info\Workshops.cshtml" />
+    <Content Include="Views\Info\Prizes.cshtml" />
+    <Content Include="Views\Info\Accommodation.cshtml" />
+    <Content Include="Views\Info\Results.cshtml" />
+    <Content Include="Views\Info\Regulations.cshtml" />
+    <Content Include="Views\Info\AboutUs.cshtml" />
+    <Content Include="Views\Info\Rules.cshtml" />
+    <Content Include="Views\Info\Styles.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,7 +396,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5505</DevelopmentServerPort>
+          <DevelopmentServerPort>46833</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:14798/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -8,15 +8,18 @@ namespace PlovdivTournament.Entities.Entity
     {
         public Content() { }
 
-        public Content(string page, string language)
+        public Content(string page, string language, string pageContent)
         {
             Page = page;
+            PageContent = pageContent;
             Language = language;
         }
 
         public virtual Guid Id { get; set; }
 
         public virtual string Page { get; set; }
+
+        public virtual string PageContent { get; set; }
 
         public virtual string Language { get; set; }
     }
@@ -28,6 +31,7 @@ namespace PlovdivTournament.Entities.Entity
             Table("Content");
             Id(x => x.Id, "Content_Id");
             Map(x => x.Page, "Page");
+            Map(x => x.PageContent, "Page_Content").Length(12000);
             Map(x => x.Language, "Language");
         }
     }

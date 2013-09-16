@@ -6,15 +6,12 @@
 }
 
 <div id="ClubWrap">
-    <div class="EditButton">
-        <a href="/Club/Edit">Edit</a>
-    </div>
-    <div class="clearfix"></div>
+    
     <fieldset class="Club_Info">
         <p>Club Name: <span><a href="#">@Model.ClubName</a></span></p>
         <p>Club Info: <span><a href="#">@Model.Info</a></span></p>
 
-        <legend>Owner Info</legend>
+        
 
         <p>Owner First Name: <span><a href="#">@Model.Owner.FirstName</a></span></p>
         <p>Owner Middle Name: <span><a href="#">@Model.Owner.MiddleName</a></span></p>
@@ -23,7 +20,7 @@
         <p>Owner Phone: <span><a href="#">@Model.Owner.Phone</a></span></p>
         <p>Owner Fax: <span><a href="#">@Model.Owner.Fax</a></span></p>
 
-        <legend>Owner Address</legend>
+        
 
         <p>Delivery Line: <span><a href="#">@Model.Owner.Address.DeliveryLine</a></span></p>
         <p>City: <span><a href="#">@Model.Owner.Address.City</a></span></p>
@@ -31,6 +28,10 @@
         <p>Zip: <span><a href="#">@Model.Owner.Address.Zip</a></span></p>
         <p>Country: <span><a href="#">@Model.Owner.Address.Country</a></span></p>
     </fieldset>
+    <div class="EditButton ProButton">
+        <a href="~/Club/Edit">Edit</a>
+    </div>
+    <div class="clearfix"></div>
 </div>
 
 <div class="clearfix"></div>

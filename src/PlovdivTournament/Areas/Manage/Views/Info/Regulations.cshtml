@@ -1,0 +1,19 @@
+﻿@model PlovdivTournament.Web.Manage.Models.MasterViewModel
+
+@{
+    ViewBag.Title = "Regulations";
+    Layout = "~/Areas/Manage/Views/Shared/Admin_Layout.cshtml";
+}
+
+@using(Html.BeginForm("Save", "Master", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.CurrentLanguage);
+    @Html.HiddenFor(x => x.PageContent, new { id = "hidden_content" })
+    @Html.HiddenFor(x => x.Page, new { id = "hidden_page"})
+				
+    <div id="Content_Wrap" class="editable">
+        @Html.Raw(Model.PageContent)
+    </div>
+
+    <a href="#" onclick="save_html(); get_form(this).submit(); return false">Save </a> 
+}t_form(this).submit(); return false">Save </a> 

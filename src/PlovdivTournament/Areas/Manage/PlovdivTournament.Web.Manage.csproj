@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\..\lib\ThirdParty\CastleWindsor\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\..\..\lib\ThirdParty\CastleWindsor\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\ThirdParty\NHibernate 3.3.3GA\FluentNHibernate.dll</HintPath>
@@ -48,6 +54,9 @@
       <HintPath>..\..\..\..\lib\ThirdParty\NHibernate 3.3.3GA\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MVC Foolproof Validation">
+      <HintPath>..\..\..\..\lib\ThirdParty\MVC Foolproof Validation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\PrivateAssemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -120,12 +129,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GalleryController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />
+    <Compile Include="Library\Helpers\SelectListHelper.cs" />
     <Compile Include="Library\IdentityAndAccess\SecurityManager.cs" />
     <Compile Include="Library\IdentityAndAccess\UserInfo.cs" />
+    <Compile Include="Library\MVCManage.cs" />
+    <Compile Include="Library\Utility\ImageUtility.cs" />
     <Compile Include="ManageAreaRegistration.cs" />
-    <Compile Include="Models\TournamentsModel.cs" />
+    <Compile Include="Models\GalleryViewModel.cs" />
+    <Compile Include="Models\MasterViewModel.cs" />
+    <Compile Include="Models\TournamentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +169,27 @@
   <ItemGroup>
     <Content Include="Views\Tournaments\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\AboutUs.cshtml" />
+    <Content Include="Views\Info\Accommodation.cshtml" />
+    <Content Include="Views\Info\Evaluation.cshtml" />
+    <Content Include="Views\Info\Fest.cshtml" />
+    <Content Include="Views\Info\Prizes.cshtml" />
+    <Content Include="Views\Info\Program.cshtml" />
+    <Content Include="Views\Info\Referees.cshtml" />
+    <Content Include="Views\Info\Regulations.cshtml" />
+    <Content Include="Views\Info\Results.cshtml" />
+    <Content Include="Views\Info\Rules.cshtml" />
+    <Content Include="Views\Info\Styles.cshtml" />
+    <Content Include="Views\Info\Taxes.cshtml" />
+    <Content Include="Views\Info\Workshops.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\UploadPhoto.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Gallery\UploadVideo.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -168,7 +206,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5510</DevelopmentServerPort>
+          <DevelopmentServerPort>47037</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -8,14 +8,17 @@ using System.Web.Mvc;
 
 namespace PlovdivTournament.Web.Controllers
 {
-    public class RegistrationController : Controller
+    public class RegistrationController : MasterController
     {
-        public ISession Session { get; set; }
-
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string language)
         {
             RegistrationViewModel model = new RegistrationViewModel();
+
+            if (string.IsNullOrWhiteSpace(language))
+                language = "Български";
+
+            model.CurrentLanguage = language;
 
             return View(model);
         }

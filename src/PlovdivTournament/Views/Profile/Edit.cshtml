@@ -8,70 +8,71 @@
     @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <fieldset>
-            <legend>Change Email</legend>
+            
                        
             <p> <label>Email :</label> <input name="Email" type="textarea" value=@Model.Email /> </p>
 
-            <legend>Change First Name</legend>
+            
                        
             <p> <label>First Name :</label> <input name="FirstName" type="textarea" value=@Model.FirstName /> </p>
             
-            <legend>Change Middle Name</legend>
+            
                        
             <p> <label>Middle Name :</label> <input name="MiddleName" type="textarea" value=@Model.MiddleName /> </p>
             
-            <legend>Change Last Name</legend>
+            
                        
             <p> <label>Last Name :</label> <input name="LastName" type="textarea" value=@Model.LastName /> </p>
             
-            <legend>Change EGN</legend>
                        
             <p> <label>EGN :</label> <input name="EGN" type="textarea" value=@Model.EGN /> </p>
             
-            <legend>Change Delivery Line</legend>
+            
                        
             <p> <label>Delivery Line :</label> <input name="DeliveryLine" type="textarea" value=@Model.DeliveryLine /> </p>
             
-            <legend>Change City</legend>
+           
                        
             <p> <label>City :</label> <input name="City" type="textarea" value=@Model.City /> </p>
             
-            <legend>Change State</legend>
+            
                        
             <p> <label>State :</label> <input name="State" type="textarea" value=@Model.State /> </p>
 
-            <legend>Change Zip</legend>
+            
                        
             <p> <label>Zip :</label> <input name="Zip" type="textarea" value=@Model.Zip /> </p>
             
-            <legend>Change Country</legend>
+            
                        
             <p> <label>Country :</label> <input name="Country" type="textarea" value=@Model.Country /> </p>
 
-            <legend>Change Phone</legend>
+            
                        
             <p> <label>Phone :</label> <input name="Phone" type="textarea" value=@Model.Phone /> </p>
 
-            <legend>Change Fax</legend>
+           
                        
             <p> <label>Fax :</label> <input name="Fax" type="textarea" value=@Model.Fax /> </p>
                        
-            <p> <label>Subscribe me for news feed @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed)</label> </p>
             
-            <legend>Change Avatar</legend>
+            
+          
 
             <div class="Change_Avatar">
                 <p><strong><input type="file" name="NewAvatar" size="23" /></strong></p>
                            
                 <div class="clearfix"></div>
             </div>
-
+            <p class="ChangeNews"> <label>Subscribe me for news feed @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed)</label> </p>
+            <div class="clearfix"></div>
             <p>@Html.ValidationMessage("invPass")</p>
             <p>@Html.ValidationMessageFor(x => x.RepeatPassword)</p>
             <p>@Html.ValidationMessageFor(x=>x.Email)</p>
         
-            <p><a href="#" onclick="get_form(this).submit(); return false">Save</a></p>
+            <p><a  class="RegButton" href="#" onclick="get_form(this).submit(); return false">Save</a></p>
             <div class="clearfix"></div>
         </fieldset>
     }
 </div>	
+<div class="clearfix"></div>

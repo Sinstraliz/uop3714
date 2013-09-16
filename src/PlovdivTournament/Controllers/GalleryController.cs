@@ -11,12 +11,8 @@ using System.Web.Mvc;
 
 namespace PlovdivTournament.Web.Controllers
 {
-    public class GalleryController : Controller
+    public class GalleryController : MasterController
     {
-        public ISession Session { get; set; }
-
-        public SecurityManager SecurityManager { get; set; }
-
         public ActionResult Videos(string category = "", int page = 1, string orderBy = "dateCreated", string asc = "false", Guid? owner = null)
         {
             page = page - 1;
@@ -91,7 +87,7 @@ namespace PlovdivTournament.Web.Controllers
             {
                 var builder = new StringBuilder();
 
-                builder.Append(String.Format("<iframe width={0} height={1} src=\"//www.youtube-nocookie.com/embed/{2} frameborder=\"0\" allowfullscreen></iframe>", width, height, video.Url));
+                builder.Append(String.Format("<iframe width={0} height={1} src=\"//www.youtube-nocookie.com/embed/{2}\" frameborder=\"0\" allowfullscreen></iframe>", width, height, video.Url));
 
                 return builder.ToString();
             }
@@ -110,14 +106,14 @@ namespace PlovdivTournament.Web.Controllers
                 byte[] data = HttpContext.Cache[key] as byte[];
                 if (data == null)
                 {
-                    data = video.Cover.Content;
+                    data = video.CoverContent;
                     if ((width.HasValue && (maxHeight.HasValue || height.HasValue)) || (height.HasValue && (width.HasValue || maxWidth.HasValue)))
-                        data = ImageUtility.SmartResize(video.Cover.Content, width, height, maxWidth, maxHeight);
+                        data = ImageUtility.SmartResize(video.CoverContent, width, height, maxWidth, maxHeight);
 
                     HttpContext.Cache[key] = data;
                 }
                 HttpContext.Response.BinaryWrite(data);
-                HttpContext.Response.ContentType = video.Cover.ContentType;
+                HttpContext.Response.ContentType = video.CoverContentType;
                 HttpContext.Response.StatusCode = 200;
             }
             HttpContext.Response.End();
@@ -162,35 +158,35 @@ namespace PlovdivTournament.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Preview(Guid id, Type type)
+        public ActionResult Preview(Guid id, string type)
         {
             var model = new GalleryViewModel();
 
-            if (type.As<Photo>() != null)
+            if (type == typeof(Photo).FullName)
             {
                 model.Photo = Session.Query<Photo>().Where(x => x.Id == id).FirstOrDefault();
 
                 if (model.Photo == null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("/");
                 }
             }
-            else if (type.As<Video>() != null)
+            else if (type == typeof(Video).FullName)
             {
                 model.Video = Session.Query<Video>().Where(x => x.Id == id).FirstOrDefault();
 
                 if (model.Video == null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("/");
                 }
             }
 
             return View(model);
         }
 
-        public ActionResult Delete(Guid id, Type type)
+        public ActionResult Delete(Guid id, string type)
         {
-            if (type.As<Photo>() != null)
+            if (type == typeof(Photo).FullName)
             {
                 var photo = Session.Get<Photo>(id);
                 if (photo == null)
@@ -201,7 +197,7 @@ namespace PlovdivTournament.Web.Controllers
 
                 Session.Delete(photo);
             }
-            else if (type.As<Video>() != null)
+            else if (type == typeof(Photo).FullName)
             {
                 var video = Session.Get<Video>(id);
                 if (video == null)

@@ -1,7 +1,7 @@
-﻿@model PlovdivTournament.Web.Models.HtmlContentModel
+﻿@model PlovdivTournament.Web.Models.MasterViewModel
 @{
     ViewBag.Title = "Taxes";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
 
-@Model.Content
+@Html.Raw(Model.PageContent)

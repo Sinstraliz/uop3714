@@ -49,11 +49,12 @@
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\AgeGroup.cs" />
     <Compile Include="Entity\Avatar.cs" />
+    <Compile Include="Entity\CategoryMember.cs" />
     <Compile Include="Entity\Content.cs" />
     <Compile Include="Entity\Discipline.cs" />
     <Compile Include="Entity\Club.cs" />
     <Compile Include="Entity\DisciplineRule.cs" />
-    <Compile Include="Entity\Group.cs" />
+    <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Participant.cs" />
     <Compile Include="Entity\Tournament.cs" />
     <Compile Include="Entity\Image.cs" />

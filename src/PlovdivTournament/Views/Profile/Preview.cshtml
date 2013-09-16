@@ -5,9 +5,10 @@
 }
 
 <div id="ProfileWrap">
+ 
     <div class="clearfix"></div>
     <div class="Profile_Photo">
-        <img src="@string.Format("/Gallery/GetImage/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133)" />
+        <img src=@String.Format("Gallery/GetImage/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133) />
     </div>
     <fieldset class="Profile_Info">
         <p>Email: <span><a href="#">@Model.Email</a></span></p>
@@ -17,8 +18,12 @@
         <p>EGN: <span><a href="#">@Model.EGN</a></span></p>
         <p>Phone: <span><a href="#">@Model.Phone</a></span></p>
         <p>Fax: <span><a href="#">@Model.Fax</a></span></p>
+        @if (Model.IsSubscribedForNewsFeed)
+        { 
+            <p>You are subscribed for news feed</p>
+        }
 
-        <legend>Address Info</legend>
+        
 
         <p>Delivery Line: <span><a href="#">@Model.DeliveryLine</a></span></p>
         <p>City: <span><a href="#">@Model.City</a></span></p>
@@ -26,5 +31,7 @@
         <p>Zip: <span><a href="#">@Model.Zip</a></span></p>
         <p>Country: <span><a href="#">@Model.Country</a></span></p>
     </fieldset>
+  
 </div>
+
 <div class="clearfix"></div>

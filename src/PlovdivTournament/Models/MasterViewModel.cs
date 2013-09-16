@@ -3,11 +3,17 @@ using System;
 using System.Linq;
 using System.Web;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace PlovdivTournament.Web.Models
 {
     public class MasterViewModel
     {
+        public MasterViewModel()
+        {
+            CurrentLanguage = "Български";
+        }
+
         public string Error { get; set; }
 
         public bool UserIsAuthenticated { get { return MvcApplication.SecurityManager.AuthenticatedUser != null; } }
@@ -15,6 +21,29 @@ namespace PlovdivTournament.Web.Models
         public UserInfo CurrentUser { get { return MvcApplication.SecurityManager.AuthenticatedUser; } }
 
         public string CurrentUrl { get { return HttpContext.Current.Request.Url.PathAndQuery; } }
+
+        public List<string> Cultures
+        {
+            get
+            {
+                var cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures).ToList();
+
+                var countries = new List<string>();
+
+                foreach (var culture in cultures)
+                {
+                    countries.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName));
+                }
+
+                return countries;
+            }
+        }
+
+        public string CurrentLanguage { get; set; }
+
+        public string Page { get; set; }
+
+        public string PageContent { get; set; }
 
         public string ReplaceOrAddToUrl(string currentUrl, string key, string value)
         {

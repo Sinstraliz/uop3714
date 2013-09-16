@@ -6,14 +6,18 @@ using PlovdivTournament.Entities.Entity;
 
 namespace PlovdivTournament.Web.Manage.Models
 {
-    public class TournamentsModel
+    public class TournamentsViewModel : MasterViewModel
     {
-        public TournamentsModel()
+        public TournamentsViewModel()
         {
             Tournaments = new List<Tournament>();
-            CurrentTournament = new Tournament();
+            NewTournament = new Tournament();
         }
+
         public List<Tournament> Tournaments { get; set; }
-        public Tournament CurrentTournament { get; set; }
+
+        public Tournament SelectedTournament { get; set; }
+
+        public Tournament NewTournament { get; set; }
     }
 }

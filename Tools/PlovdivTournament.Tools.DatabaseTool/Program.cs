@@ -3,6 +3,7 @@ using NHibernate.Tool.hbm2ddl;
 using PlovdivTournament.Entities;
 using PlovdivTournament.Entities.Entity;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -39,7 +40,6 @@ namespace MyPhoto.Tools.DatabaseTool
             using (var session = sessionFactory.OpenSession())
             {
                 session.BeginTransaction();
-                //Insert Default Entities in the DB From her
 
                 var admin = new User(adminId, "admin", "admin", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD", true);
                 var address = new Address("Bulgaria", "Plovdiv", "Plovdiv", "4000", "Petyr Shilev 14", admin);

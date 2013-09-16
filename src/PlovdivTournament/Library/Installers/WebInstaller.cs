@@ -78,8 +78,6 @@ namespace PlovdivTournament.Web.Library.Installers
             if (session == null)
                 return;
 
-            MvcApplication.Container.Release(session);
-
             if (!session.Transaction.IsActive)
                 return;
 
@@ -87,6 +85,12 @@ namespace PlovdivTournament.Web.Library.Installers
                 session.Transaction.Rollback();
             else
                 session.Transaction.Commit();
+
+            session.Close();
+
+            MvcApplication.Container.Release(session);
+
+
         }
     }
 }

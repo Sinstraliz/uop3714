@@ -33,6 +33,8 @@ namespace PlovdivTournament.Entities.Entity
         public virtual DateTime EndDate { get; set; }
 
         public virtual IList<Discipline> Disciplines { get; set; }
+
+        public virtual IList<AgeGroup> AgeGroups { get; set; }
     }
 
     public class TournamentMap : ClassMap<Tournament>
@@ -43,10 +45,11 @@ namespace PlovdivTournament.Entities.Entity
             Id(x => x.Id, "Tournament_Id");
             Map(x => x.Name, "Name");
             Map(x => x.Place, "Place");
-            Map(x => x.IsActive, "active");
+            Map(x => x.IsActive, "Active");
             Map(x => x.StartDate, "Start_Date");
             Map(x => x.EndDate, "End_Date");
             HasMany(x => x.Disciplines).Cascade.AllDeleteOrphan();
+            HasMany(x => x.AgeGroups).Cascade.AllDeleteOrphan();
         }
     }
 }

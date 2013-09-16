@@ -7,6 +7,13 @@ namespace PlovdivTournament.Entities.Entity
     {
         public AgeGroup() { }
 
+        public AgeGroup(string name, double minimumAge, double maximumAge)
+        {
+            Name = name;
+            MinimumAge = minimumAge;
+            MaximumAge = maximumAge;
+        }
+
         public virtual Guid Id { get; protected set; }
 
         public virtual string Name { get; set; }
@@ -14,8 +21,6 @@ namespace PlovdivTournament.Entities.Entity
         public virtual double MinimumAge { get; set; }
 
         public virtual double MaximumAge { get; set; }
-
-        public virtual DisciplineRule Discipline { get; set; }
     }
 
     public class AgeGroupMap : ClassMap<AgeGroup>
@@ -27,7 +32,6 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.Name, "Name");
             Map(x => x.MinimumAge, "Minimum_Age");
             Map(x => x.MaximumAge, "Maximum_Age");
-            References(x => x.Discipline, "Discipline_Id");
         }
     }
 }

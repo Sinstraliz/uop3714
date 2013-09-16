@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model PlovdivTournament.Web.Manage.Models.MasterViewModel
+<!DOCTYPE html>
 <html>
 <head>
 	<title>@ViewBag.Title</title>
@@ -31,16 +32,15 @@
 				"emoticons template paste textcolor"
 			],
 			toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-			toolbar2: "print preview media | forecolor backcolor emoticons",
+			toolbar2: "print preview media | forecolor backcolor emoticons | fontsizeselect",
 			image_advtab: true,
 			templates: [
 				{ title: 'Test template 1', content: 'Test 1' },
 				{ title: 'Test template 2', content: 'Test 2' }
 			]
 		});
-</script>
+    </script>
 	<script type="text/javascript">
-
 		function get_form(element) {
 			while (element) {
 				element = element.parentNode
@@ -50,14 +50,31 @@
 				}
 			}
 			return 0;
-		}
+		};
 
+		function save_html() {
+			var content = $('#Content_Wrap').html();
+			$('#hidden_content').val(encodeURIComponent(content));
+			$('#hidden_page').val('@String.Format("{0}/{1}", HttpContext.Current.Request.RequestContext.RouteData.Values["controller"], HttpContext.Current.Request.RequestContext.RouteData.Values["action"])');
+		};
+
+	    $(function () {
+	        $('#LanguageDropDown').change(function () {
+	            $('#hidden_languageDropDown_page').val('@String.Format("{0}/{1}", HttpContext.Current.Request.RequestContext.RouteData.Values["controller"], HttpContext.Current.Request.RequestContext.RouteData.Values["action"])');
+	            $('#LanguageDropDownForm').submit();
+	        })
+	    });
 	</script>
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 <body>
+    @if (!Model.UserIsAuthenticated)
+    {
+        Response.Redirect("/");
+    }
+
 	<div id="wrapper">
 		<header>
 			<div class="AdminNav">
@@ -75,47 +92,55 @@
 				<a href="~/Manage/Home/Index"><img src="~/Resources/imgs/logo.png" alt="LOGO" /></a>
 			</div>
 			<div class="clearfix"></div>
+            <div class="LanguageDropDown">
+                @using (Html.BeginForm("ChangeLanguage", "Master", FormMethod.Post, new { id = "LanguageDropDownForm" }))
+                {
+                    @Html.HiddenFor(x => x.Page, new { id = "hidden_languageDropDown_page"})
+                    @Html.DropDownListFor(x => x.CurrentLanguage, new SelectList(Model.Cultures), new { id = "LanguageDropDown" })
+                }
+            </div>
 			<nav>
 				<ul>
 					<li><a href="#">Инфо</a>
 						<ul>
-							<li><a href="~/Info/Fest">Фестивал</a></li>
-							<li><a href="~/Info/Program">Програма</a></li>
-							<li><a href="~/Info/Referees">Жури</a></li>
-							<li><a href="~/Info/Evaluation">Оценяване</a></li>
-							<li><a href="~/Info/Taxes">Такси</a></li>
+							<li><a href="~/Manage/Info/Program">Програма</a></li>
+							<li><a href="~/Manage/Info/Referees">Жури</a></li>
+							<li><a href="~/Manage/Info/Evaluation">Оценяване</a></li>
+							<li><a href="~/Manage/Info/Workshops">Семинари</a></li>
+							<li><a href="~/Manage/Info/Prizes">Награди</a></li>
+							<li><a href="~/Manage/Info/Accommodation">Настаняване</a></li>
+							<li><a href="~/Manage/Info/Results">Резултати</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Категории</a>
 						<ul>
-							<li><a href="~/Categories/Styles">Стилове</a></li>
-							<li><a href="~/Categories/Rules">Правила</a></li>
+							<li><a href="~/Manage/Info/Styles">Стилове</a></li>
+							<li><a href="~/Manage/Info/Rules">Правила</a></li>
 							
 						</ul>
 					</li>
 					<li><a href="#">Регистрация</a></li>
 					<li><a href="#">Галерия</a>
 						<ul>
-							<li><a href="~/Gallery/Videos">Видео</a></li>
-							<li><a href="~/Gallery/Photos">Снимки</a></li>
+							<li><a href="~/Manage/Gallery/UploadVideo">Видео</a></li>
+							<li><a href="~/Manage/Gallery/UploadPhoto">Снимки</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Контакти</a></li>
+					<li><a href="~/Manage/Info/Regulations">Регламент</a></li>
+					<li><a href="~/Manage/Info/Taxes">Такси</a></li>
+					<li><a href="~/Manage/Info/AboutUs">Контакти</a></li>
 				</ul>
 			</nav>
 			<div class="clearfix"></div>
 		</header>
 		<section id="content">
-		 <div id="Content_Wrap" class="editable">
-			  @RenderBody()
-		 </div>
+			@RenderBody()
 		</section>
 		<footer>
 			<div class="logo">
 				<img src="~/Resources/imgs/logo.png" alt="LOGO" />
 			</div>
 			<div id="SocialWrap">
-				<a href="#"><img src="~/Resources/imgs/t.png" alt="LOGO" /></a>
 				<a href="#"><img src="~/Resources/imgs/f.png" alt="LOGO" /></a>
 				<a href="#"><img src="~/Resources/imgs/y.png" alt="LOGO" /></a>
 			</div>

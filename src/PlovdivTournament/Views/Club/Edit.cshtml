@@ -9,17 +9,17 @@
     @using (Html.BeginForm("Save", "Club", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <fieldset>
-            <legend>Change Club Name</legend>
-                       
-            <p> <label>Name:</label> <input name="ClubName" type="textarea" value=@Model.ClubName /> </p>
-
-            <legend>Change Club Info</legend>
-                       
-            <p> <label>Info:</label> <input name="Info" type="textarea" value=@Model.Info /> </p>
             
-            <legend>Change Club Members</legend>
+                       
+            <p> <label>Name:</label> <input name="ClubName" type="textarea" value="@Model.ClubName" /> </p>
 
-            <p><a href="#" onclick="get_form(this).submit(); return false">Save</a></p>
+            
+                       
+            <p> <label>Info:</label> <textarea class ="ChangeArea" name="Info"  >@Model.Info </textarea> </p>
+            
+            
+
+            <p><a class="RegButton" href="#" onclick="get_form(this).submit(); return false">Save</a></p>
             <div class="clearfix"></div>
         </fieldset>
     }
@@ -27,3 +27,4 @@
          @Html.Partial("MembersPartialView")
     </div>
 </div>	
+<div class="clearfix"></div>

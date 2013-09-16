@@ -8,12 +8,8 @@ using System.Web.Mvc;
 
 namespace PlovdivTournament.Web.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : MasterController
     {
-        public ISession Session { get; set; }
-
-        public SecurityManager SecurityManager { get; set; }
-
         public ActionResult Index()
         {
             User currentUser = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);

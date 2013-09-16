@@ -31,6 +31,8 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual bool IsNewParticipant { get; set; }
 
+        public virtual CategoryMember CategoryMember { get; set; }
+
         public virtual Club Club { get; set; }
     }
     public class ParticipantMap : ClassMap<Participant>
@@ -43,6 +45,7 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.LastName);
             Map(x => x.EGN);
             References(x => x.Club);
+            References(x => x.CategoryMember);
             Map(x => x.LicenceNumber);
             Map(x => x.IsNewParticipant);
         }
