@@ -60,7 +60,7 @@ namespace PlovdivTournament.Entities.Entity
         {
             Table("Users");
             Id(x => x.Id, "User_Id");
-            Map(x => x.Email, "Email");
+            Map(x => x.Email, "Email").Unique();
             Map(x => x.Password, "Password");
             Map(x => x.FirstName, "First_Name");
             Map(x => x.MiddleName, "Middle_Name");

@@ -1,56 +1,58 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataAnnotationsExtensions;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace PlovdivTournament.Web.Models
 {
     public class RegistrationViewModel : MasterViewModel
     {
-        [Required(ErrorMessage = "The Password field is required.")]
+        [Required(ErrorMessage = "Паролата е задължителна")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "The Confirm Password field is required.")]
+        [Required(ErrorMessage = "Потвърждаването на паролата е задължително")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Password do not match")]
+        [Compare("Password", ErrorMessage = "Паролата не съвпада")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "The Email field is required.")]
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Invalid e-mail")]
+        [Required(ErrorMessage = "Е-майлът е задължителен")]
+        [Email(ErrorMessage = "Невалиден е-майл")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "The first name field is required.")]
+        [Required(ErrorMessage = "Имтеро е задължително")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "The middle name field is required.")]
+        [Required(ErrorMessage = "Бащиното име е задължително")]
         public string MiddleName { get; set; }
 
-        [Required(ErrorMessage = "The last name field is required.")]
+        [Required(ErrorMessage = "Фамилията е задължителна")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "The EGN field is required.")]
+        [Required(ErrorMessage = "ЕГН-то е задължително")]
+        [Digits(ErrorMessage = "ЕГН-то може да съдържа само цифри")]
         public string EGN { get; set; }
 
-        [Required(ErrorMessage = "The phone field is required.")]
+        [Required(ErrorMessage = "Имтеро е задължително")]
         public string Phone { get; set; }
 
         public string Fax { get; set; }
 
-        [Required(ErrorMessage = "The country field is required.")]
+        [Required(ErrorMessage = "Държавата е задължителна")]
         public string Country { get; set; }
 
-        [Required(ErrorMessage = "The city field is required.")]
+        [Required(ErrorMessage = "Градът е задължителен")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "The state field is required.")]
+        [Required(ErrorMessage = "Областта е задължителна")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "The zip field is required.")]
+        [Required(ErrorMessage = "Пощенският код е задължителен")]
         public string Zip { get; set; }
 
-        [Required(ErrorMessage = "The street field is required.")]
+        [Required(ErrorMessage = "Улицата е задължителна")]
         public string DeliveryLine { get; set; }
 
-        [Required(ErrorMessage = "The club name field is required.")]
+        [Required(ErrorMessage = "Името на клуба е задължително")]
         public string ClubName { get; set; }
 
         public string ClubInfo { get; set; }

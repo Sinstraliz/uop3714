@@ -54,9 +54,6 @@
       <HintPath>..\..\..\..\lib\ThirdParty\NHibernate 3.3.3GA\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MVC Foolproof Validation">
-      <HintPath>..\..\..\..\lib\ThirdParty\MVC Foolproof Validation.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\PrivateAssemblies\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -152,7 +149,9 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\PlovdivTournament.Entities\PlovdivTournament.Entities.csproj">
@@ -190,6 +189,12 @@
   <ItemGroup>
     <Content Include="Views\Gallery\UploadVideo.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Categories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Samodiva Tournament Manage.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -206,7 +211,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>47037</DevelopmentServerPort>
+          <DevelopmentServerPort>20581</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

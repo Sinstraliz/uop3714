@@ -1,12 +1,20 @@
 ﻿@model PlovdivTournament.Web.Models.GalleryViewModel
 
-<ul>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "")>All</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Animals")>Animals</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Art")>Art</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Nature")>Nature</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Charity")>Charity</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "City")>City</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Computer")>Computer</a></li>
-    <li><a href=@Model.ReplaceOrAddToUrl("category", "Cute")>Cute</a></li>
-</ul>
+<div class="GalleryNav">
+    <ul>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "")">Всички</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Класически танц")">Класически танц</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Модерен танц")">Модерен танц</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Джаз танц")">Джаз танц</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Характерен танц")">Характерен танц</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Танцово шоу")">Танцово шоу</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Етно шоу")">Етно шоу</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Латино шоу")">Латино шоу</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Продукции")">Продукции</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Acrogym")">Acrogym</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Hip Hop")">Hip Hop</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Break Dance")">Break Dance</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Free Open Dance")">Free Open Dance</a></li>
+        <li><a href="@Model.ReplaceOrAddToUrl("category", "Party Time Seniors")">Party Time Seniors</a></li>
+    </ul>
+</div>

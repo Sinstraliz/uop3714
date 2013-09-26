@@ -1,5 +1,6 @@
 ﻿using NHibernate;
 using PlovdivTournament.Entities.Entity;
+using PlovdivTournament.Web.Library.Comparers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,128 +13,127 @@ namespace PlovdivTournament.Web.Library.Helpers
     {
         private static IEnumerable<string> categories = new List<string> 
         {
-            "Animals",
-            "Art",
-            "Nature",
-            "Charity",
-            "City",
-            "Computer",
-            "Cute"
+            "Класически танц",
+            "Модерен танц",
+            "Джаз танц",
+            "Характерен танц",
+            "Танцово шоу",
+            "Етно шоу",
+            "Латино шоу",
+            "Продукции",
+            "Acrogym",
+            "Hip Hop",
+            "Break Dance",
+            "Free Open Dance",
+            "Party Time Seniors"
         };
 
         public static IEnumerable<SelectListItem> GetCategories(string selected)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Category--",
+                    Text = "--Категория--",
                     Value = string.Empty,
                     Selected = selected == string.Empty
-                }
-            };
+                };
 
             foreach (var categorie in categories)
             {
-                result.Add(new SelectListItem { Text = categorie, Selected = categorie == selected, Value = categorie });
+                yield return new SelectListItem() { Text = categorie, Selected = categorie == selected, Value = categorie };
             }
-
-            return result;
         }
 
         public static IEnumerable<SelectListItem> GetDisciplines(IList<Discipline> disciplines)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Discipline--",
+                    Text = "--Дисциплина--",
                     Value = string.Empty
-                }
-            };
+                };
 
             foreach (var discipline in disciplines)
             {
-                result.Add(new SelectListItem { Text = discipline.DisciplineName, Value = discipline.Id.ToString() });
+                yield return new SelectListItem() { Text = discipline.DisciplineName, Value = discipline.Id.ToString() };
             }
-
-            return result;
         }
 
         public static IEnumerable<SelectListItem> GetTournamentCategories(IList<Category> categories)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Category--",
+                    Text = "--Категория--",
                     Value = string.Empty
-                }
-            };
+                };
 
-            foreach (var categorie in categories)
+            var orderedCategories = categories.OrderBy(x => x, new CategoryComparer()).ToList();
+
+            foreach (var categorie in orderedCategories)
             {
-                result.Add(new SelectListItem { Text = categorie.CategoryName, Value = categorie.Id.ToString() });
+                yield return new SelectListItem() { Text = categorie.CategoryName, Value = categorie.Id.ToString() };
             }
-
-            return result;
         }
 
         public static IEnumerable<SelectListItem> GetDisciplineAgeGroups(IList<AgeGroup> ageGroups)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Age--",
+                    Text = "--Възрастова група--",
                     Value = string.Empty
-                }
-            };
+                };
 
-            foreach (var ageGroup in ageGroups)
+            var orderedAgeGroups = ageGroups.OrderBy(x => x, new AgeGroupComparer()).ToList();
+
+            foreach (var ageGroup in orderedAgeGroups)
             {
-                result.Add(new SelectListItem { Text = ageGroup.Name, Value = ageGroup.Id.ToString() });
+                yield return new SelectListItem() { Text = ageGroup.Name, Value = ageGroup.Id.ToString() };
             }
-
-            return result;
         }
 
-        public static IEnumerable<SelectListItem> GetClubMembers(IList<Participant> members)
+        public static IEnumerable<SelectListItem> GetClubMembers(IList<Participant> members, AgeGroup ageGroup)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Member--",
+                    Text = "--Член--",
                     Value = string.Empty
-                }
-            };
+                };
 
-            foreach (var member in members)
+            var properMembers = new List<Participant>();
+
+            if (ageGroup.AllowedMinimumAge != null)
+                properMembers = members.Where(x => GetAgeFromEGN(x.EGN) < ageGroup.MaximumAge && GetAgeFromEGN(x.EGN) > ageGroup.AllowedMinimumAge).OrderBy(x => x.FirstName).ToList();
+            else
+                properMembers = members.Where(x => GetAgeFromEGN(x.EGN) < ageGroup.MaximumAge && GetAgeFromEGN(x.EGN) > ageGroup.MinimumAge).OrderBy(x => x.FirstName).ToList();
+
+            foreach (var member in properMembers)
             {
-                result.Add(new SelectListItem { Text = string.Format("{0} {1} {2} {3}", member.FirstName, member.MiddleName, member.LastName, member.EGN), Value = member.Id.ToString() });
+                yield return new SelectListItem() { Text = string.Format("{0} {1} {2} {3}", member.FirstName, member.MiddleName, member.LastName, member.EGN), Value = member.Id.ToString() };
             }
-
-            return result;
         }
 
         public static IEnumerable<SelectListItem> GetTournaments(IList<Tournament> tournaments)
         {
-            var result = new List<SelectListItem>
-            {
-                new SelectListItem
+            yield return new SelectListItem()
                 {
-                    Text = "--Tournament--",
+                    Text = "--Турнир--",
                     Value = string.Empty
-                }
-            };
+                };
 
             foreach (var tournament in tournaments)
             {
-                result.Add(new SelectListItem { Text = tournament.Name, Value = tournament.Id.ToString() });
+                yield return new SelectListItem { Text = tournament.Name, Value = tournament.Id.ToString() };
             }
+        }
 
-            return result;
+        private static int GetAgeFromEGN(string egn)
+        {
+            var participantYear = int.Parse(egn.Substring(0, 2));
+
+            var currentYear = int.Parse(DateTime.Now.Year.ToString().Substring(2, 2));
+
+            if (participantYear > currentYear || (participantYear == currentYear && (egn[2] == '4' || egn[2] == '5')))
+                currentYear += 100;
+
+            return currentYear - participantYear;
         }
     }
 }

@@ -8,10 +8,12 @@ namespace PlovdivTournament.Entities.Entity
     {
         public Category() { }
 
-        public Category(string categoryName, Discipline discipline)
+        public Category(string categoryName, List<AgeGroup> ageGroups, int minNumberOfParticipants, int maxNumberOfParticipants)
         {
             CategoryName = categoryName;
-            Discipline = discipline;
+            AgeGroups = ageGroups;
+            MinNumberOfParticipants = minNumberOfParticipants;
+            MaxNumberOfParticipants = maxNumberOfParticipants;
         }
 
         public virtual Guid Id { get; protected set; }
@@ -20,7 +22,7 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual Discipline Discipline { get; set; }
 
-        public virtual AgeGroup AgeGroup { get; set; }
+        public virtual IList<AgeGroup> AgeGroups { get; set; }
 
         public virtual int MinNumberOfParticipants { get; set; }
 
@@ -39,8 +41,8 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.MinNumberOfParticipants, "Min_Number_Of_Participants");
             Map(x => x.MaxNumberOfParticipants, "Max_Number_Of_Participants");
             Map(x => x.CategoryName, "Category_Name");
-            HasMany(x => x.CategoryMembers);
-            References(x => x.AgeGroup, "Age_Group_Id");
+            HasMany(x => x.CategoryMembers).Cascade.AllDeleteOrphan();
+            HasMany(x => x.AgeGroups).Cascade.AllDeleteOrphan();
         }
     }
 }

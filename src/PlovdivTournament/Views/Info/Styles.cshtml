@@ -6,3 +6,219 @@
 }
 
 @Html.Raw(Model.PageContent)
+<script>
+    $(document).ready(function () {
+        $("#ClasicDance").click(function () {
+            $("#ClasicDanceInfo").slideToggle("slow");
+        });
+        $("#ModernDance").click(function () {
+            $("#ModernDanceInfo").slideToggle("slow");
+        });
+        $("#JazDance").click(function () {
+            $("#JazDanceInfo").slideToggle("slow");
+        });
+        $("#DanceShow").click(function () {
+            $("#DanceShowInfo").slideToggle("slow");
+        });
+        $("#DanceShowB").click(function () {
+            $("#DanceShowBInfo").slideToggle("slow");
+        });
+        $("#Acrogym").click(function () {
+            $("#AcrogymInfo").slideToggle("slow");
+        });
+        $("#TipicalDance").click(function () {
+            $("#TipicalDanceInfo").slideToggle("slow");
+        });
+        $("#EthnoShow").click(function () {
+            $("#EthnoShowInfo").slideToggle("slow");
+        });
+        $("#LatinShow").click(function () {
+            $("#LatinShowInfo").slideToggle("slow");
+        });
+        $("#HipHopBattle").click(function () {
+            $("#HipHopBattleInfo").slideToggle("slow");
+        });
+        $("#BreakBattle").click(function () {
+            $("#BreakBattleInfo").slideToggle("slow");
+        });
+        $("#FreeOpenDance").click(function () {
+            $("#FreeOpenDanceInfo").slideToggle("slow");
+        });
+        $("#PartyTimeSeniors").click(function () {
+            $("#PartyTimeSeniorsInfo").slideToggle("slow");
+        });
+        $("#MiniProductions").click(function () {
+            $("#MiniProductionsInfo").slideToggle("slow");
+        });
+        $("#Productions").click(function () {
+            $("#ProductionsInfo").slideToggle("slow");
+        });
+    });
+</script>
+
+
+@*<div class="DisciplineWrap" id="ClasicDance">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Класически танц</p>
+        </div>
+        <div class="DisciplineInfo" id="ClasicDanceInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="ModernDance">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Модерен танц</p>
+        </div>
+        <div class="DisciplineInfo" id="ModernDanceInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="JazDance">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Джаз танц</p>
+        </div>
+        <div class="DisciplineInfo" id="JazDanceInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="DanceShow">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Танцово шоу</p>
+        </div>
+        <div class="DisciplineInfo" id="DanceShowInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="DanceShowB">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Танцово шоу Б</p>
+        </div>
+        <div class="DisciplineInfo" id="DanceShowBInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="Acrogym">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Acrogym</p>
+        </div>
+        <div class="DisciplineInfo" id="AcrogymInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="TipicalDance">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Характерен танц</p>
+        </div>
+        <div class="DisciplineInfo" id="TipicalDanceInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="EthnoShow">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Етно шоу</p>
+        </div>
+        <div class="DisciplineInfo" id="EthnoShowInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="LatinShow">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Латино шоу</p>
+        </div>
+        <div class="DisciplineInfo" id="LatinShowInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="HipHopBattle">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Hip Hop Battle</p>
+        </div>
+        <div class="DisciplineInfo" id="HipHopBattleInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="BreakBattle">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Break Battle</p>
+        </div>
+        <div class="DisciplineInfo" id="BreakBattleInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="FreeOpenDance">
+    <div class="DisciplineBox">
+        <div class="DisciplineName" id="FreeOpenDanceInfo">
+            <p>Free Open Dance</p>
+        </div>
+        <div class="DisciplineInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="PartyTimeSeniors">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Party Time Seniors</p>
+        </div>
+        <div class="DisciplineInfo" id="PartyTimeSeniorsInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="MiniProductions">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Мини Продукции</p>
+        </div>
+        <div class="DisciplineInfo" id="MiniProductionsInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="DisciplineWrap" id="Productions">
+    <div class="DisciplineBox">
+        <div class="DisciplineName">
+            <p>Продукции</p>
+        </div>
+        <div class="DisciplineInfo" id="ProductionsInfo">
+            <p>Some info</p>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>*@

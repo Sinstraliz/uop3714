@@ -17,6 +17,10 @@ namespace PlovdivTournament.Web.Controllers
         {
             page = page - 1;
             GalleryViewModel model = new GalleryViewModel();
+
+
+            LoadLanguage(model);
+
             IQueryable<Video> allVideos = null;
             model.Page = page + 1;
 
@@ -49,6 +53,10 @@ namespace PlovdivTournament.Web.Controllers
         {
             page = page - 1;
             GalleryViewModel model = new GalleryViewModel();
+
+
+            LoadLanguage(model);
+
             IQueryable<Photo> allPhotos = null;
             model.Page = page + 1;
 
@@ -162,6 +170,9 @@ namespace PlovdivTournament.Web.Controllers
         {
             var model = new GalleryViewModel();
 
+
+            LoadLanguage(model);
+
             if (type == typeof(Photo).FullName)
             {
                 model.Photo = Session.Query<Photo>().Where(x => x.Id == id).FirstOrDefault();
@@ -197,7 +208,7 @@ namespace PlovdivTournament.Web.Controllers
 
                 Session.Delete(photo);
             }
-            else if (type == typeof(Photo).FullName)
+            else if (type == typeof(Video).FullName)
             {
                 var video = Session.Get<Video>(id);
                 if (video == null)

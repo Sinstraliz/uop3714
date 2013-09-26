@@ -20,6 +20,9 @@ namespace PlovdivTournament.Web.Controllers
 
             var model = new ProfileViewModel(avatar, currentUser.Email, currentUser.FirstName, currentUser.MiddleName, currentUser.LastName, currentUser.EGN, currentUser.Phone, currentUser.Fax, currentUser.Address);
 
+
+            LoadLanguage(model);
+
             return View(model);
         }
 
@@ -33,12 +36,16 @@ namespace PlovdivTournament.Web.Controllers
 
             var model = new ProfileViewModel(avatar, currentUser.Email, currentUser.FirstName, currentUser.MiddleName, currentUser.LastName, currentUser.EGN, currentUser.Phone, currentUser.Fax, currentUser.Address);
 
+            LoadLanguage(model);
+
             return View(model);
         }
 
         public ActionResult Edit()
         {
             var model = new EditProfileViewModel();
+
+            LoadLanguage(model);
 
             User user = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);
 
@@ -63,7 +70,11 @@ namespace PlovdivTournament.Web.Controllers
         [HttpPost]
         public ActionResult Save(EditProfileViewModel model)
         {
-            TryValidateModel(model);
+            LoadLanguage(model);
+
+            ModelState["OldPassword"].Errors.Clear();
+            ModelState["NewPassword"].Errors.Clear();
+            ModelState["RepeatPassword"].Errors.Clear();
 
             if (!ModelState.IsValid)
                 return View("Edit", model);
@@ -107,13 +118,28 @@ namespace PlovdivTournament.Web.Controllers
         {
             var model = new EditProfileViewModel();
 
+
+            LoadLanguage(model);
+
             return View(model);
         }
 
         [HttpPost]
         public ActionResult ChangePassword(EditProfileViewModel model)
         {
-            TryValidateModel(model);
+                        
+            LoadLanguage(model);
+
+            ModelState["FirstName"].Errors.Clear();
+            ModelState["MiddleName"].Errors.Clear();
+            ModelState["LastName"].Errors.Clear();
+            ModelState["EGN"].Errors.Clear();
+            ModelState["Phone"].Errors.Clear();
+            ModelState["Country"].Errors.Clear();
+            ModelState["City"].Errors.Clear();
+            ModelState["State"].Errors.Clear();
+            ModelState["Zip"].Errors.Clear();
+            ModelState["DeliveryLine"].Errors.Clear();
 
             if (!ModelState.IsValid)
                 return View("ChangePassword", model);
@@ -122,8 +148,14 @@ namespace PlovdivTournament.Web.Controllers
 
             if (!String.IsNullOrEmpty(model.NewPassword))
             {
+
                 if (model.OldPassword == currentUser.Password)
-                    currentUser.Password = model.NewPassword;
+                {
+                    if (currentUser.Password != model.NewPassword)
+                        currentUser.Password = model.NewPassword;
+                    else
+                        ModelState.AddModelError("samePass", "Моля изберете различна парола");
+                }
                 else
                 {
                     ModelState.AddModelError("invPass", "Invalid password");
@@ -136,7 +168,7 @@ namespace PlovdivTournament.Web.Controllers
             }
             else
             {
-                ModelState.AddModelError("invPass", "Invalid password");
+                ModelState.AddModelError("invPass", "Невалидна парола");
             }
 
             return RedirectToAction("Index");

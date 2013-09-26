@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
 using System;
+using System.Collections.Generic;
 
 namespace PlovdivTournament.Entities.Entity
 {
@@ -31,7 +32,7 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual bool IsNewParticipant { get; set; }
 
-        public virtual CategoryMember CategoryMember { get; set; }
+        public virtual IList<CategoryMember> CategoryMembers { get; set; }
 
         public virtual Club Club { get; set; }
     }
@@ -45,7 +46,7 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.LastName);
             Map(x => x.EGN);
             References(x => x.Club);
-            References(x => x.CategoryMember);
+            HasManyToMany(x => x.CategoryMembers);
             Map(x => x.LicenceNumber);
             Map(x => x.IsNewParticipant);
         }

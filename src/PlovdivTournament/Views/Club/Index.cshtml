@@ -6,32 +6,26 @@
 }
 
 <div id="ClubWrap">
-    
     <fieldset class="Club_Info">
-        <p>Club Name: <span><a href="#">@Model.ClubName</a></span></p>
-        <p>Club Info: <span><a href="#">@Model.Info</a></span></p>
+        <p>Име на клуба: <span><a href="#">@Model.ClubName</a></span></p>
+        <p>Инфо за клуба: <span><a href="#">@Model.Info</a></span></p>
 
-        
+        <p>Име на ръководителя: <span><a href="#">@Model.Owner.FirstName</a></span></p>
+        <p>Бащино име на ръководителя: <span><a href="#">@Model.Owner.MiddleName</a></span></p>
+        <p>Фамилно име на ръководителя: <span><a href="#">@Model.Owner.LastName</a></span></p>
+        <p>Е-майл на ръководителя: <span><a href="#">@Model.Owner.Email</a></span></p>
+        <p>Телефон на ръководителя: <span><a href="#">@Model.Owner.Phone</a></span></p>
+        <p>Факс на ръководителя: <span><a href="#">@Model.Owner.Fax</a></span></p>
 
-        <p>Owner First Name: <span><a href="#">@Model.Owner.FirstName</a></span></p>
-        <p>Owner Middle Name: <span><a href="#">@Model.Owner.MiddleName</a></span></p>
-        <p>Owner Last Name: <span><a href="#">@Model.Owner.LastName</a></span></p>
-        <p>Owner Email: <span><a href="#">@Model.Owner.Email</a></span></p>
-        <p>Owner Phone: <span><a href="#">@Model.Owner.Phone</a></span></p>
-        <p>Owner Fax: <span><a href="#">@Model.Owner.Fax</a></span></p>
-
-        
-
-        <p>Delivery Line: <span><a href="#">@Model.Owner.Address.DeliveryLine</a></span></p>
-        <p>City: <span><a href="#">@Model.Owner.Address.City</a></span></p>
-        <p>State: <span><a href="#">@Model.Owner.Address.State</a></span></p>
-        <p>Zip: <span><a href="#">@Model.Owner.Address.Zip</a></span></p>
-        <p>Country: <span><a href="#">@Model.Owner.Address.Country</a></span></p>
+        <p>Улица: <span><a href="#">@Model.Owner.Address.DeliveryLine</a></span></p>
+        <p>Град: <span><a href="#">@Model.Owner.Address.City</a></span></p>
+        <p>Област: <span><a href="#">@Model.Owner.Address.State</a></span></p>
+        <p>Пощенски код: <span><a href="#">@Model.Owner.Address.Zip</a></span></p>
+        <p>Държава: <span><a href="#">@Model.Owner.Address.Country</a></span></p>
     </fieldset>
     <div class="EditButton ProButton">
-        <a href="~/Club/Edit">Edit</a>
+        <a href="~/Club/Edit">Редактирай</a>
     </div>
     <div class="clearfix"></div>
 </div>
-
 <div class="clearfix"></div>

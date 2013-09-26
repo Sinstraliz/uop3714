@@ -56,7 +56,15 @@ namespace PlovdivTournament.Web.Manage.Controllers
 
             var action = model.Page.Substring(model.Page.IndexOf('/') + 1, model.Page.Length - model.Page.IndexOf('/') - 1);
 
-            return RedirectToAction(action, controller, new { language = model.CurrentLanguage });
+            return RedirectToAction(action, controller);
+        }
+
+        protected void LoadLanguage(dynamic model)
+        {
+            if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
+                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            else
+                model.CurrentLanguage = "Bulgarian";
         }
     }
 }

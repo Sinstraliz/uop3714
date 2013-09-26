@@ -1,5 +1,4 @@
-﻿using Foolproof;
-using PlovdivTournament.Entities.Entity;
+﻿using PlovdivTournament.Entities.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,29 +23,29 @@ namespace PlovdivTournament.Web.Manage.Models
 
         public bool IsPhoto { get; set; }
 
-        [RequiredIf("IsPhoto", Operator.EqualTo, true, ErrorMessage = "Photo is required")]
+        //[RequiredIf("IsPhoto", Operator.EqualTo, true, ErrorMessage = "Photo is required")]
         public HttpPostedFileBase Photo { get; set; }
 
-        [RequiredIf("Photo", Operator.NotEqualTo, null, ErrorMessage = "Title is required")]
+        //[RequiredIf("Photo", Operator.NotEqualTo, null, ErrorMessage = "Title is required")]
         public string PhotoTitle { get; set; }
 
         public string PhotoDescription { get; set; }
 
-        [RequiredIf("Photo", Operator.NotEqualTo, null, ErrorMessage = "Category is required")]
+        //[RequiredIf("Photo", Operator.NotEqualTo, null, ErrorMessage = "Category is required")]
         public string PhotoCategory { get; set; }
 
-        [RequiredIf("IsPhoto", Operator.EqualTo, false, ErrorMessage = "Video is required")]
+        //[RequiredIf("IsPhoto", Operator.EqualTo, false, ErrorMessage = "Video is required")]
         public string VideoUrl { get; set; }
 
-        [RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Title is required")]
+        //[RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Title is required")]
         public string VideoTitle { get; set; }
 
         public string VideoDescription { get; set; }
 
-        [RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Category is required")]
+        //[RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Category is required")]
         public string VideoCategory { get; set; }
 
-        [RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Cover is required")]
+        //[RequiredIf("Video", Operator.NotEqualTo, null, ErrorMessage = "Cover is required")]
         public HttpPostedFileBase VideoCover { get; set; }
     }
 }

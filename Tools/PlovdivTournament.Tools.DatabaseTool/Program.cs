@@ -41,7 +41,7 @@ namespace MyPhoto.Tools.DatabaseTool
             {
                 session.BeginTransaction();
 
-                var admin = new User(adminId, "admin", "admin", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD", true);
+                var admin = new User(adminId, "samodiva1998", "760508", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD", true);
                 var address = new Address("Bulgaria", "Plovdiv", "Plovdiv", "4000", "Petyr Shilev 14", admin);
                 admin.Address = address;
                 var club = new Club("Samodiva", "Some info", admin);

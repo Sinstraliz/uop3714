@@ -20,6 +20,7 @@ namespace PlovdivTournament.Web
 
         protected void Application_Start()
         {
+            log4net.Config.XmlConfigurator.Configure();
             AreaRegistration.RegisterAllAreas();
             MvcApplication.Container = new WindsorContainer();
             MVCManage.Container = Container;

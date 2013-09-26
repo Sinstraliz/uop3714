@@ -3,20 +3,24 @@
     {
         using (Html.BeginForm("Login", "Home", FormMethod.Post))
         { 
-            @Html.ValidationSummary(true)
-            @Html.TextBox("LoginEmail", "", new { placeholder = "Email" })
-            @Html.Password("LoginPassword", "", new { placeholder = "Password" })
+            @Html.TextBox("LoginEmail", "", new { placeholder = "Е-майл" })
+            @Html.Password("LoginPassword", "", new { placeholder = "Парола" })
+           
             <div class="LoginButtons">
-                <a href="#" id="loginButton" onclick="get_form(this).submit(); return false">Login </a>
+                <a href="#" id="loginButton" onclick="get_form(this).submit(); return false">Влез</a>
                 <span>/ </span>
-                <a href="/Registration">Register</a>
+                <a href="/Registration">Регистрирай се</a>
             </div>
+            if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() != "Registration" && HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() != "Register")
+            {
+                @Html.ValidationSummary()
+            }
         }
     }
     else
     { 
         <div>
-            <a href="/Home/Logout">Logout</a>
+            <a href="/Home/Logout">Излез</a>
         </div>
     }
 </div>

@@ -4,6 +4,10 @@
 { 
 	<div class="user_nav">
 		<ul>
+            @if (Model.CurrentUser.IsAdmin)
+            { 
+                <li><a href="/Manage">Админ Панел</a></li>
+            }
 			<li><a href="@String.Format("/Club/?owner={0}",Model.CurrentUser.Id)">Моят Клуб</a></li>
 			<li><a href="/Profile">Профил</a></li>
 		</ul>

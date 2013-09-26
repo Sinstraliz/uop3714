@@ -11,14 +11,11 @@ namespace PlovdivTournament.Web.Controllers
     public class RegistrationController : MasterController
     {
         [HttpGet]
-        public ActionResult Index(string language)
+        public ActionResult Index()
         {
             RegistrationViewModel model = new RegistrationViewModel();
 
-            if (string.IsNullOrWhiteSpace(language))
-                language = "Български";
-
-            model.CurrentLanguage = language;
+            LoadLanguage(model);
 
             return View(model);
         }
@@ -26,6 +23,9 @@ namespace PlovdivTournament.Web.Controllers
         [HttpPost]
         public ActionResult Register(RegistrationViewModel model)
         {
+
+            LoadLanguage(model);
+
             if (!ModelState.IsValid)
             {
                 return View("Index", model);
@@ -35,7 +35,7 @@ namespace PlovdivTournament.Web.Controllers
 
             if (user != null)
             {
-                ModelState.AddModelError("Unique", "There is already a user with that e-mail.");
+                ModelState.AddModelError("Unique", "Вече има потребител с този е-майл");
 
                 return View("Index", model);
             }

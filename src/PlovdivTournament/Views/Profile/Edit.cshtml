@@ -8,69 +8,32 @@
     @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <fieldset>
-            
-                       
-            <p> <label>Email :</label> <input name="Email" type="textarea" value=@Model.Email /> </p>
-
-            
-                       
-            <p> <label>First Name :</label> <input name="FirstName" type="textarea" value=@Model.FirstName /> </p>
-            
-            
-                       
-            <p> <label>Middle Name :</label> <input name="MiddleName" type="textarea" value=@Model.MiddleName /> </p>
-            
-            
-                       
-            <p> <label>Last Name :</label> <input name="LastName" type="textarea" value=@Model.LastName /> </p>
-            
-                       
-            <p> <label>EGN :</label> <input name="EGN" type="textarea" value=@Model.EGN /> </p>
-            
-            
-                       
-            <p> <label>Delivery Line :</label> <input name="DeliveryLine" type="textarea" value=@Model.DeliveryLine /> </p>
-            
-           
-                       
-            <p> <label>City :</label> <input name="City" type="textarea" value=@Model.City /> </p>
-            
-            
-                       
-            <p> <label>State :</label> <input name="State" type="textarea" value=@Model.State /> </p>
-
-            
-                       
-            <p> <label>Zip :</label> <input name="Zip" type="textarea" value=@Model.Zip /> </p>
-            
-            
-                       
-            <p> <label>Country :</label> <input name="Country" type="textarea" value=@Model.Country /> </p>
-
-            
-                       
-            <p> <label>Phone :</label> <input name="Phone" type="textarea" value=@Model.Phone /> </p>
-
-           
-                       
-            <p> <label>Fax :</label> <input name="Fax" type="textarea" value=@Model.Fax /> </p>
-                       
-            
-            
-          
+            <p> <label>Е-майл: </label> <input name="Email" type="text" value="@Model.Email" /> </p>
+            <p> <label>Име: </label> <input name="FirstName" type="text" value="@Model.FirstName" /> </p>
+            <p> <label>Бащино име: </label> <input name="MiddleName" type="text" value="@Model.MiddleName" /> </p>
+            <p> <label>Фамилия: </label> <input name="LastName" type="text" value="@Model.LastName" /> </p>
+            <p> <label>ЕГН: </label> <input name="EGN" type="text" value="@Model.EGN" /> </p>
+            <p> <label>Улица: </label> <input name="DeliveryLine" type="text" value="@Model.DeliveryLine" /> </p>
+            <p> <label>Град: </label> <input name="City" type="text" value="@Model.City" /> </p>
+            <p> <label>Област: </label> <input name="State" type="text" value="@Model.State" /> </p>
+            <p> <label>Пощенски код: </label> <input name="Zip" type="text" value="@Model.Zip" /> </p>
+            <p> <label>Държава: </label> <input name="Country" type="text" value="@Model.Country" /> </p>
+            <p> <label>Телефон: </label> <input name="Phone" type="text" value="@Model.Phone" /> </p>
+            <p> <label>Факс: </label> <input name="Fax" type="text" value="@Model.Fax" /> </p>
 
             <div class="Change_Avatar">
                 <p><strong><input type="file" name="NewAvatar" size="23" /></strong></p>
                            
                 <div class="clearfix"></div>
             </div>
-            <p class="ChangeNews"> <label>Subscribe me for news feed @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed)</label> </p>
+            <p class="ChangeNews"> <label>Искам да получавам новини @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed)</label> </p>
             <div class="clearfix"></div>
-            <p>@Html.ValidationMessage("invPass")</p>
+
+            <p>@Html.ValidationSummary()</p>
             <p>@Html.ValidationMessageFor(x => x.RepeatPassword)</p>
             <p>@Html.ValidationMessageFor(x=>x.Email)</p>
         
-            <p><a  class="RegButton" href="#" onclick="get_form(this).submit(); return false">Save</a></p>
+            <p><a  class="RegButton" href="#" onclick="get_form(this).submit(); return false">Запази</a></p>
             <div class="clearfix"></div>
         </fieldset>
     }

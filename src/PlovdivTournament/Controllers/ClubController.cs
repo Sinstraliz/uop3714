@@ -21,6 +21,9 @@ namespace PlovdivTournament.Web.Controllers
 
             ClubViewModel model = new ClubViewModel(club.Name, club.Info, club.Owner, club.Members.ToList());
 
+
+            LoadLanguage(model);
+
             return View(model);
         }
 
@@ -30,12 +33,18 @@ namespace PlovdivTournament.Web.Controllers
 
             ClubViewModel model = new ClubViewModel(club.Name, club.Info, club.Owner, club.Members.ToList());
 
+
+            LoadLanguage(model);
+
             return View(model);
         }
 
         public ActionResult Edit()
         {
             var model = new EditClubViewModel();
+
+
+            LoadLanguage(model);
 
             User currentUser = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);
 
@@ -51,18 +60,24 @@ namespace PlovdivTournament.Web.Controllers
         [HttpPost]
         public ActionResult Save(EditClubViewModel model)
         {
-            TryValidateModel(model);
+            LoadLanguage(model);
+
+            User currentUser = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);
+
+            model.Members = currentUser.Club.Members.ToList();
+
+            ModelState["FirstName"].Errors.Clear();
+            ModelState["MiddleName"].Errors.Clear();
+            ModelState["LastName"].Errors.Clear();
+            ModelState["EGN"].Errors.Clear();
 
             if (!ModelState.IsValid)
                 return View("Edit", model);
 
-            User currentUser = Session.Get<User>(SecurityManager.AuthenticatedUser.Id);
-
             currentUser.Club.Name = model.ClubName;
             currentUser.Club.Info = model.Info;
 
-            SecurityManager.Logout();
-            SecurityManager.AuthenticateUser(currentUser.Email, currentUser.Password);
+            Session.Update(currentUser);
 
             return RedirectToAction("Index");
         }
@@ -76,8 +91,6 @@ namespace PlovdivTournament.Web.Controllers
                 throw new InvalidOperationException();
             }
 
-            //var id = new Guid(memberId);
-
             var member = Session.Query<Participant>().Where(x => x.Id == memberId).FirstOrDefault();
             if (member == null)
             {
@@ -85,6 +98,10 @@ namespace PlovdivTournament.Web.Controllers
             }
 
             var model = new EditClubViewModel();
+
+
+            LoadLanguage(model);
+
             model.ClubName = user.Club.Name;
             model.Info = user.Club.Info;
             model.Members = user.Club.Members.ToList();
@@ -99,6 +116,9 @@ namespace PlovdivTournament.Web.Controllers
         [HttpPost]
         public ActionResult AddMember(EditClubViewModel model)
         {
+
+            LoadLanguage(model);
+
             var user = Session.Query<User>().Where(x => x.Id == SecurityManager.AuthenticatedUser.Id).FirstOrDefault();
             if (user == null)
             {
@@ -112,7 +132,7 @@ namespace PlovdivTournament.Web.Controllers
 
             if (member != null)
             {
-                model.Error = "There is already a member with that EGN in club with name:" + member.Club.Name;
+                ModelState.AddModelError("Member exists", string.Format("Вече съществува член на клуб {0} с това ЕГН", member.Club.Name));
 
                 return PartialView("MembersPartialView", model);
             }

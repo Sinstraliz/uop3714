@@ -21,6 +21,8 @@ namespace PlovdivTournament.Entities.Entity
 
         public virtual Category Category { get; set; }
 
+        public virtual AgeGroup AgeGroup { get; set; }
+
         public virtual IList<Participant> Participants { get; set; }
     }
     public class CategoryMemberMap : ClassMap<CategoryMember>
@@ -32,7 +34,8 @@ namespace PlovdivTournament.Entities.Entity
             Map(x => x.Name, "Name");
             References(x => x.Club);
             References(x => x.Category);
-            HasMany(x => x.Participants);
+            References(x => x.AgeGroup);
+            HasManyToMany(x => x.Participants).Cascade.None();
         }
     }
 }

@@ -24,11 +24,11 @@
     <td>@tournament.EndDate</td>
     @if (!tournament.IsActive)
     {
-    <td><a href="~/Manage/Tournaments/MakeActive?id=@tournament.Id">Make Active</a></td>
+        <td><a href="~/Manage/Tournaments/Activate?id=@tournament.Id">Активирай</a></td>
     }
     else
     { 
-    <td>Active</td>
+        <td><a href="~/Manage/Tournaments/Deactivate?id=@tournament.Id">Деактивирай</a></td>
     }
 
     </tr>
@@ -46,10 +46,10 @@
                 @Html.TextBoxFor(x => x.NewTournament.Place, new { placeholder = "Place" })
             </p>
             <p>
-                @Html.TextBoxFor(x => x.NewTournament.StartDate, new { placeholder = "Start Date" })
+                @Html.TextBoxFor(x => x.NewTournament.StartDate, new { placeholder = "End Date", id = "startDatePicker" })
             </p>
             <p>
-                @Html.TextBoxFor(x => x.NewTournament.EndDate, new { placeholder = "End Date" })
+                @Html.TextBoxFor(x => x.NewTournament.EndDate, new { placeholder = "End Date", id = "endDatePicker" })
             </p>
 
             <div class="clearfix"></div>

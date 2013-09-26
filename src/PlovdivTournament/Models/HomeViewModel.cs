@@ -12,10 +12,10 @@ namespace PlovdivTournament.Web.Models
 
         }
 
-        [Required(ErrorMessage = "Username is required")]
+        [Required(ErrorMessage = "И-майлът е задължителен")]
         public string LoginEmail { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Паролата е задължителна")]
         public string LoginPassword { get; set; }
     }
 }

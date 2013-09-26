@@ -10,10 +10,7 @@ namespace PlovdivTournament.Web.Manage.Models
 {
     public class MasterViewModel
     {
-        public MasterViewModel()
-        {
-            CurrentLanguage = "Български";
-        }
+        public MasterViewModel() { }
 
         public string Error { get; set; }
 
@@ -33,7 +30,7 @@ namespace PlovdivTournament.Web.Manage.Models
 
                 foreach (var culture in cultures)
                 {
-                    countries.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName));
+                    countries.Add(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.DisplayName));
                 }
 
                 return countries;

@@ -1,17 +1,18 @@
-﻿
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 using System;
 using System.Collections.Generic;
+
 namespace PlovdivTournament.Entities.Entity
 {
     public class Discipline
     {
         public Discipline() { }
 
-        public Discipline(string disciplineName, Tournament tournament)
+        public Discipline(string disciplineName, Tournament tournament, List<Category> categories)
         {
             DisciplineName = disciplineName;
             Tournament = tournament;
+            Categories = categories;
         }
 
         public virtual Guid Id { get; protected set; }
@@ -34,8 +35,8 @@ namespace PlovdivTournament.Entities.Entity
             Id(x => x.Id, "Discipline_Id");
             References(x => x.Tournament, "Tournament_Id");
             Map(x => x.DisciplineName, "Discipline_Name");
-            HasMany(x => x.Rules);
-            HasMany(x => x.Categories);
+            HasMany(x => x.Rules).Cascade.AllDeleteOrphan();
+            HasMany(x => x.Categories).Cascade.AllDeleteOrphan();
         }
     }
 }

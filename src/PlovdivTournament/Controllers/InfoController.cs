@@ -17,14 +17,11 @@ namespace PlovdivTournament.Web.Controllers
             return View();
         }
 
-        public ActionResult Fest(string language)
+        public ActionResult Fest()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Fest" && x.Language == model.CurrentLanguage);
 
@@ -39,14 +36,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Program(string language)
+        public ActionResult Program()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Program" && x.Language == model.CurrentLanguage);
 
@@ -61,14 +55,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Referees(string language)
+        public ActionResult Referees()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Referees" && x.Language == model.CurrentLanguage);
 
@@ -83,14 +74,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Evaluation(string language)
+        public ActionResult Evaluation()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Evaluation" && x.Language == model.CurrentLanguage);
 
@@ -105,14 +93,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Workshops(string language)
+        public ActionResult Workshops()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+                LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Workshops" && x.Language == model.CurrentLanguage);
 
@@ -127,14 +112,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Prizes(string language)
+        public ActionResult Prizes()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Prizes" && x.Language == model.CurrentLanguage);
 
@@ -149,14 +131,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Accommodation(string language)
+        public ActionResult Accommodation()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Accommodation" && x.Language == model.CurrentLanguage);
 
@@ -171,14 +150,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Results(string language)
+        public ActionResult Results()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Results" && x.Language == model.CurrentLanguage);
 
@@ -193,14 +169,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Styles(string language)
+        public ActionResult Styles()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Styles" && x.Language == model.CurrentLanguage);
 
@@ -215,14 +188,30 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Rules(string language)
+        public ActionResult Categories()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
+
+            var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Categories" && x.Language == model.CurrentLanguage);
+
+            if (content != null)
+            {
+                var html = content.PageContent;
+
+                html = html.Replace("contenteditable=\"true\"", "contenteditable=\"false\"");
+
+                model.PageContent = html;
+            }
+            return View(model);
+        }
+
+        public ActionResult Rules()
+        {
+            MasterViewModel model = new MasterViewModel();
+
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Rules" && x.Language == model.CurrentLanguage);
 
@@ -237,14 +226,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Regulations(string language)
+        public ActionResult Regulations()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Regulations" && x.Language == model.CurrentLanguage);
 
@@ -259,14 +245,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Taxes(string language)
+        public ActionResult Taxes()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "Taxes" && x.Language == model.CurrentLanguage);
 
@@ -281,14 +264,11 @@ namespace PlovdivTournament.Web.Controllers
             return View(model);
         }
 
-        public ActionResult AboutUs(string language)
+        public ActionResult AboutUs()
         {
             MasterViewModel model = new MasterViewModel();
 
-            if (!string.IsNullOrWhiteSpace(language))
-                model.CurrentLanguage = language;
-            else if (HttpContext.Request.Cookies.AllKeys.Contains("Language"))
-                model.CurrentLanguage = HttpContext.Request.Cookies["Language"].Value;
+            LoadLanguage(model);
 
             var content = Session.Query<Content>().FirstOrDefault(x => x.Page == "AboutUs" && x.Language == model.CurrentLanguage);
 

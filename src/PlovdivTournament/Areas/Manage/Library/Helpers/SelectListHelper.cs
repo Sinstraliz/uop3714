@@ -10,13 +10,19 @@ namespace PlovdivTournament.Web.Manage.Library.Helpers
     {
         private static IEnumerable<string> categories = new List<string> 
         {
-            "Animals",
-            "Art",
-            "Nature",
-            "Charity",
-            "City",
-            "Computer",
-            "Cute"
+            "Класически танц",
+            "Модерен танц",
+            "Джаз танц",
+            "Характерен танц",
+            "Танцово шоу",
+            "Етно шоу",
+            "Латино шоу",
+            "Продукции",
+            "Acrogym",
+            "Hip Hop",
+            "Break Dance",
+            "Free Open Dance",
+            "Party Time Seniors"
         };
 
         public static IEnumerable<SelectListItem> GetCategories(string selected)
@@ -25,7 +31,7 @@ namespace PlovdivTournament.Web.Manage.Library.Helpers
             {
                 new SelectListItem
                 {
-                    Text = "--Categorie--",
+                    Text = "--Категория--",
                     Value = string.Empty,
                     Selected = selected == string.Empty
                 }

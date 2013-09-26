@@ -16,9 +16,6 @@
 
         <div class="pict">
             <div class="show">
-                <div class="Caption">
-                    @Model.AllPhotos[index].Title
-                </div>
                 <div class="clearfix">
                 </div>
             </div>
@@ -39,9 +36,6 @@
 
         <div class="pict">
             <div class="show">
-                <div class="Caption">
-                    @Model.AllPhotos[index].Title
-                </div>
                 <div class="clearfix">
                 </div>
             </div>
@@ -62,9 +56,6 @@
 
         <div class="pict">
             <div class="show">
-                <div class="Caption">
-                    @Model.AllPhotos[index].Title
-                </div>
                 <div class="clearfix">
                 </div>
             </div>
@@ -83,7 +74,7 @@
     { 
         if (Model.Page >1)
         {  
-            <a href=@Model.ReplaceOrAddToUrl("page", (Model.Page - 1).ToString())>Previous |</a>
+            <a href="@Model.ReplaceOrAddToUrl("page", (Model.Page - 1).ToString())">Previous |</a>
         }
         
         if (Model.Page < 5)
@@ -91,9 +82,13 @@
             for (int i = 1; i <= 5&&i<=Model.MaxPages; i++)
             {
                 if (i == Model.Page)
-                {   <a href="#" class="active">@i</a>}
+                {   
+                    <a href="#" class="active">@i</a>
+                }
                 else
-                {   <a href=@Model.ReplaceOrAddToUrl("page", i.ToString())>@i</a>}
+                {   
+                    <a href="@Model.ReplaceOrAddToUrl("page", i.ToString())">@i</a>
+                }
             }
       
         }
@@ -102,15 +97,19 @@
             for (int i = Model.Page - 2; i <= Model.Page + 2 && i <= Model.MaxPages; i++)
                {
                    if (i == Model.Page)
-                   {   <a href="#" class="active">@i</a>}
+                   {   
+                       <a href="#" class="active">@i</a>
+                   }
                    else
-                   {  <a href=@Model.ReplaceOrAddToUrl("page", i.ToString())>@i</a>}
+                   {  
+                       <a href="@Model.ReplaceOrAddToUrl("page", i.ToString())">@i</a>
+                   }
                }
         }
       
         if (Model.Page <Model.MaxPages)
         {   
-            <a href=@Model.ReplaceOrAddToUrl("page", (Model.Page + 1).ToString())>| Next</a>
+            <a href="@Model.ReplaceOrAddToUrl("page", (Model.Page + 1).ToString())">| Next</a>
         }
     }
     </p>

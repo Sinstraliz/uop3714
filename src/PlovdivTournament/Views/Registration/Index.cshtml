@@ -8,86 +8,72 @@
     @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
     {
     <fieldset>
-        <legend>Register</legend>
+        <legend>Регистрация</legend>
         <div class="RegColumn">
         <p>
-            @Html.TextBoxFor(x => x.Email, new { placeholder = "E-mail" })
-            @Html.ValidationMessageFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email, new { placeholder = "Е-майл" })*
         </p>
         <p>
-            @Html.PasswordFor(x => x.Password, new { placeholder = "Password" })
-            @Html.ValidationMessageFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password, new { placeholder = "Парола" })*
         </p>
         <p>
-            @Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "Confirm Password" })
-            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+            @Html.PasswordFor(x => x.ConfirmPassword, new { placeholder = "Повтори паролата" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.FirstName, new { placeholder = "First Name" })
-            @Html.ValidationMessageFor(x => x.FirstName)
+            @Html.TextBoxFor(x => x.FirstName, new { placeholder = "Име" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.MiddleName, new { placeholder = "Middle Name" })
-            @Html.ValidationMessageFor(x => x.MiddleName)
+            @Html.TextBoxFor(x => x.MiddleName, new { placeholder = "Бащино име" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.LastName, new { placeholder = "Last Name" })
-            @Html.ValidationMessageFor(x => x.LastName)
+            @Html.TextBoxFor(x => x.LastName, new { placeholder = "Фамилия" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.Phone, new { placeholder = "Phone" })
-            @Html.ValidationMessageFor(x => x.Phone)
+            @Html.TextBoxFor(x => x.Phone, new { placeholder = "Телефон" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.Fax, new { placeholder = "Fax" })
-            @Html.ValidationMessageFor(x => x.Fax)
+            @Html.TextBoxFor(x => x.Fax, new { placeholder = "Факс" })
         </p>
             </div>
          <div class="RegColumn column2">
         <p>
-            @Html.TextBoxFor(x => x.EGN, new { placeholder = "EGN" })
-            @Html.ValidationMessageFor(x => x.EGN)
+            @Html.TextBoxFor(x => x.EGN, new { placeholder = "ЕГН" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.DeliveryLine, new { placeholder = "Delivery Line" })
-            @Html.ValidationMessageFor(x => x.DeliveryLine)
+            @Html.TextBoxFor(x => x.DeliveryLine, new { placeholder = "Улица" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.City, new { placeholder = "City" })
-            @Html.ValidationMessageFor(x => x.City)
+            @Html.TextBoxFor(x => x.City, new { placeholder = "Град" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.State, new { placeholder = "State" })
-            @Html.ValidationMessageFor(x => x.State)
+            @Html.TextBoxFor(x => x.State, new { placeholder = "Област" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.Zip, new { placeholder = "Zip" })
-            @Html.ValidationMessageFor(x => x.Zip)
+            @Html.TextBoxFor(x => x.Zip, new { placeholder = "Пощенски код" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.Country, new { placeholder = "Country" })
-            @Html.ValidationMessageFor(x => x.Country)
+            @Html.TextBoxFor(x => x.Country, new { placeholder = "Държава" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.ClubName, new { placeholder = "Club Name" })
-            @Html.ValidationMessageFor(x => x.ClubName)
+            @Html.TextBoxFor(x => x.ClubName, new { placeholder = "Име на клуба" })*
         </p>
         <p>
-            @Html.TextBoxFor(x => x.ClubInfo, new { placeholder = "Club Info" })
-            @Html.ValidationMessageFor(x => x.ClubInfo)
+            @Html.TextBoxFor(x => x.ClubInfo, new { placeholder = "Инфо за клуба" })
         </p>
              </div>
         <p>
-            <label>Subscribe me for news feed
-                @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed, new { placeholder = "Is Subscribed For News Feed" })
+            <label>Искам да получавам новини
+                @Html.CheckBoxFor(x => x.IsSubscribedForNewsFeed)
             </label>
-            @Html.ValidationMessageFor(x => x.IsSubscribedForNewsFeed)
+            <label>
+                Полетата, отбелязани с * са задължителни
+            </label>
         </p>
 
         <div class="clearfix"></div>
+        @Html.ValidationSummary()
 
-        @Html.ValidationMessage("Unique")
-        <input type="submit" value="Register" class="RegButton"/>
+        <input type="submit" value="Регистрирай се" class="RegButton"/>
 
         <div class="clearfix"></div>
     </fieldset>

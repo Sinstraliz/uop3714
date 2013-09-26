@@ -10,6 +10,9 @@ body{
 	color:#ff3e3e;
 }
 
+.validation-summary-errors {
+	color: red;
+}
 
 
 @font-face {
@@ -71,6 +74,7 @@ nav ul ul{
 	margin-top:0px;
 	position:absolute;
 	padding:0px;
+    z-index:1000;
 }
 nav ul li ul li {
 	margin:0px;
@@ -173,52 +177,52 @@ nav  li:hover > ul li a {
 
 
 #login {
-    float:right;
-    margin-top:-130px;
+	float:right;
+	margin-top:-130px;
 
 }
-    #login input {
-        margin:10px 0px 0px 10px;
-    }
+	#login input {
+		margin:10px 0px 0px 10px;
+	}
 .LoginButtons {
-    margin: -20px 0px 0px 15px;
-    display: inline-block;
-    float:right;
+	margin: -20px 0px 0px 15px;
+	display: inline-block;
+	float:right;
 }
 
 
 
 #RegWrap 
 {
-    float:left;
-	margin:37px 0px 0px 136px;
+	float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px;
 }
 
 #RegWrap label {
 	margin: 20px 205px 0px 0px;
-width: 200px;
+width: 300px;
 float: right;
 	
 }
 #RegWrap input 
 {
-    margin:20px 0px 0px 0px;
+	margin:20px 0px 0px 0px;
 }
 #RegWrap legend 
 {
-    font-family:KeepCalm;
-    font-size:18px;
-    padding:15px;
+	font-family:KeepCalm;
+	font-size:18px;
+	padding:15px;
 }
 
 #RegWrap form a 
 {
-    float:right;
-    margin:30px 200px 20px 0px;
-    text-decoration:none;
-    color:#000;
+	float:right;
+	margin:30px 200px 20px 0px;
+	text-decoration:none;
+	color:#000;
 }
 #RegWrap form a:hover 
 {
@@ -232,27 +236,27 @@ float: left;
 margin: 0px 0px 0px 95px;
 }
 #RegWrap p {
-    clear:both;
+	clear:both;
 }
 .column2 {
-    margin:0px 0px 0px 90px;
+	margin:0px 0px 0px 90px;
 }
 .RegButton {
-    float:right;
-    margin:20px 20px 10px 20px !important;
+	float:right;
+	margin:20px 20px 10px 20px !important;
 }
 
 .LanguageDropDown {
-    float:right;
-    margin:10px 0px 0px 0px;
+	float:right;
+	margin:10px 0px 0px 0px;
 }
 
-    .LanguageDropDown form select {
-        width:422px;
-    }
+	.LanguageDropDown form select {
+		width:422px;
+	}
 
 
-    .user_nav {
+	.user_nav {
 	float:right;
 	margin:10px 0px 10px 0px;
 }
@@ -276,40 +280,65 @@ margin: 0px 0px 0px 95px;
 	text-transform:uppercase;
 }
 .RegisterWrap select {
+	float:left;
+	clear:both;
+	margin:15px 0px 10px 30px;
+}
+.RegisterWrap #DanceName {
+	float:left;
+	clear:both;
+	margin:15px 0px 10px 30px;
+}
+.RegisterWrap .validation-summary-errors {
     float:left;
     clear:both;
-    margin:15px 0px 10px 30px;
 }
 .RegisterWrap 
 {
-    float:left;
-	margin:37px 0px 0px 136px;
+	float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px;
 }
+.RegisteredWrap {
+    float:left;
+	margin:37px 0px 0px 190px;
+}
+    .RegisteredWrap .CategoryMember  {
+        float:left;
+	
+	box-shadow:0 0	5px rgba(172,186,191,0.8);
+	width:600px;
+    }
+        .RegisteredWrap .CategoryMember p {
+            margin:10px 0px 10px 10px;
+        }
+.RegisteredWrap .CategoryMember a {
+    margin: 7px 0px 0px 570px;
+}
 #ProfileWrap 
 {
-    float:left;
-	margin:37px 0px 0px 136px;
+	float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px;
 }
 
-    #ProfileWrap fieldset p {
-        margin:15px 0px 10px 20px;
-    }
+	#ProfileWrap fieldset p {
+		margin:15px 0px 10px 20px;
+	}
 .ProButton {
-    float:right;
-     margin:20px 20px 10px 0px !important;
+	float:right;
+	 margin:20px 20px 10px 0px !important;
 }
 .Profile_Photo {
-    margin:20px;
+	margin:20px;
 }
 
 #Change_Password_Wrap {
    
-    float:left;
-	margin:37px 0px 0px 136px;
+	float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px; 
 }
@@ -321,14 +350,14 @@ float: left;
 }
 #Change_Password_Wrap input 
 {
-    margin:20px 0px 0px 0px;
+	margin:20px 0px 0px 0px;
 }
-    #Change_Password_Wrap form {
-        margin:20px;
-    }
+	#Change_Password_Wrap form {
+		margin:20px;
+	}
 #Change_Profile_Wrap {
-     float:left;
-	margin:37px 0px 0px 136px;
+	 float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px; 
 }
@@ -341,36 +370,36 @@ float: left;
 }
 #Change_Profile_Wrap input 
 {
-    margin:20px 0px 0px 0px;
+	margin:20px 0px 0px 0px;
 }
-    #Change_Profile_Wrap form {
-        margin:20px;
-    }
+	#Change_Profile_Wrap form {
+		margin:20px;
+	}
 
 .ChangeNews label {
-    width:200px !important;
+	width:200px !important;
 }
 
 
 
 
 #ClubWrap {
-     float:left;
-	margin:37px 0px 0px 136px;
+	 float:left;
+	margin:37px 0px 0px 190px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:600px; 
 }
 
  #ClubWrap fieldset p {
-        margin:15px 0px 10px 20px;
-    }
+		margin:15px 0px 10px 20px;
+	}
 
 
 
 
  #Change_Club_Wrap {
    
-    float:left;
+	float:left;
 	margin:37px 0px 0px 86px;
 	box-shadow:0 0	5px rgba(172,186,191,0.8);
 	width:800px; 
@@ -383,26 +412,192 @@ float: left;
 }
 #Change_Club_Wrap input 
 {
-    margin:20px 0px 0px 0px;
+	margin:20px 0px 0px 0px;
 }
-    #Change_Club_Wrap form {
-        margin: 10px 0px 0px 40px;
-    }
+	#Change_Club_Wrap form {
+		margin: 10px 0px 0px 40px;
+	}
 .ChangeArea {
-    width:600px;
-    height:100px;
-    margin:10px 0px 0px 0px;
-    resize:none;
+	width:600px;
+	height:100px;
+	margin:10px 0px 0px 0px;
+	resize:none;
 }
 
 .MembersWrap {
-    margin: 10px 0px 0px 40px;
+	margin: 10px 0px 0px 40px;
 }
 .member {
-    margin:10px 0px 10px 10px;
-    position:relative;
+	margin:10px 0px 10px 10px;
+	position:relative;
 }
 .PartialDelete {
-    position:absolute;
-    margin: -2px 0px 0px 10px;
+	position:absolute;
+	margin: -2px 0px 0px 10px;
+}
+
+
+/*Gallery styles*/
+#column1{
+	float:left;
+	margin:0px 0px 0px 136px;
+}
+#column2{
+	float:left;
+	margin:0px 0px 0px 36px;
+}
+#column3{
+	margin:0px 0px 0px 36px;
+	float:left;
+}
+.pict{
+	margin:30px 0px 0px 0px;
+	position:relative;
+}
+.pict img{
+    width: 200px;
+    height: 133px;
+}
+#pager {
+	width:178px;
+	margin:30px	auto;
+	padding:0px 0px 0px 15px;
+}
+#pager p a {
+	text-decoration:none;
+	float:left;
+	color:#000;
+	margin:0px 0px 0px 3px;
+}
+#pager p a.active{
+	text-decoration:none;
+	color:#FFF;
+	background-color:#e41f3a;
+}
+    
+.GalleryNav {
+    float:left;
+}
+.GalleryNav  ul {
+	
+	list-style-type:none;
+	display:inline;
+	
+	}
+.GalleryNav li {
+	padding:5px 0px 0px 0px;
+	
+	}	
+.GalleryNav li a {
+	font-family:'Roboto';
+	text-decoration:none;
+	color:#000;
+	font-size:14px;
+	text-transform:uppercase;
+}
+.GalleryNav li a:hover {
+	font-family:'Roboto';
+	padding:3px 0px 0px 0px;
+	color:#ff3e3e;
+	
+}
+
+
+/*Picture styles*/
+#Big_Pic
+{
+    float:left;
+    position:relative;
+}
+
+#Big_Pic a {
+    float: right;
+right: 10px;
+position: absolute;
+top: 3px;
+}
+#PreviewPicWrap{
+	float:left;
+	margin:37px 0px 0px 210px;
+	padding:0px 0px 30px 0px;
+}
+#Pic_Info {
+	margin:60px 0px 0px 0px;
+	border-left:3px solid #e41f3a;
+}
+#Pic_Info p {
+	padding: 0px 0px 0px 10px;
+	font-family:'Segoe UI';
+	line-height:25px;
+	
+}
+#Pic_Info a{
+	color:#2DA3E3;
+	text-decoration:none;
+}
+#Pic_Info .description{
+	width:580px;
+}
+
+/*Video styles*/
+
+#Big_Vid
+{
+    float:left;
+    position:relative;
+}
+
+#Big_Vid a {
+    float: right;
+right: 10px;
+position: absolute;
+top: 3px;
+z-index:10;
+}
+
+#Vid_Info {
+	margin:60px 0px 0px 0px;
+	border-left:3px solid #e41f3a;
+}
+#Vid_Info p {
+	padding: 0px 0px 0px 10px;
+	font-family:'Segoe UI';
+	line-height:25px;
+	
+}
+#Vid_Info a{
+	color:#2DA3E3;
+	text-decoration:none;
+}
+#Vid_Info .description{
+	width:580px;
+}
+#PreviewVidWrap{
+	float:left;
+	margin:37px 0px 0px 160px;
+	padding:0px 0px 30px 0px;
+}
+.DisciplineInfo {
+    display:none;
+}
+
+.DisciplineWrap {
+        	float:left;
+	margin:15px 0px 0px 86px;
+	box-shadow:0 0	5px rgba(172,186,191,0.8);
+	width:800px; 
+    cursor:pointer;
+}
+.DisciplineName {
+    margin-top:10px;
+    margin-bottom:10px;
+    text-align:center;
+}
+.DisciplineInfo {
+    margin:10px;
+}
+#Edit_Member {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }

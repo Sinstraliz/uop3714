@@ -4,45 +4,50 @@
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-<div id="PreviewWrap">
+
     @if(Model.Photo != null)
     {
-        <div id="Big_Pic">
-            @if (Model.CurrentUser != null && (Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Photo.Owner.Id))
-            {
-                <a href="@string.Format("/Gallery/Delete/{0}/{1}", Model.Photo.Id, typeof(PlovdivTournament.Entities.Entity.Photo))" id="Delete_Pic">
-                    <img src="/Resources/imgs/delete.png" alt="delete" /></a>
-            }
-            <img src="@string.Format("/Gallery/GetImage/{0}?&width={1}&height={2}", Model.Photo.Id, 640, 350)" alt="Photo" />
-        </div>
-        <div class="clearfix"></div>
-        <div id="Pic_Info">
-            <p>
-                Caption: @Model.Photo.Title
-            </p>
-            <p class="description">
-                Description: @Model.Photo.Description
-            </p>
+        <div id="PreviewPicWrap">
+            <div id="Big_Pic">
+                @if (Model.CurrentUser != null && (Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Photo.Owner.Id))
+                {
+                    <a href="@string.Format("/Gallery/Delete?id={0}&type={1}", Model.Photo.Id, typeof(PlovdivTournament.Entities.Entity.Photo))" id="Delete_Pic">
+                        <img src="/Resources/imgs/delete.png" alt="delete" /></a>
+                }
+                <img src="@string.Format("/Gallery/GetImage/{0}?&width={1}&height={2}", Model.Photo.Id, 640, 350)" alt="Photo" />
+            </div>
+            <div class="clearfix"></div>
+            <div id="Pic_Info">
+                <p>
+                    Заглавие: @Model.Photo.Title
+                </p>
+                <p class="description">
+                    Описание: @Model.Photo.Description
+                </p>
+            </div>
         </div>
     }
     else if (Model.Video != null)
     { 
-        <div id="Big_Vid">
-            @if (Model.CurrentUser != null && (Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Video.Owner.Id))
-            {
-                <a href="@string.Format("/Gallery/Delete?{0}&{1}", Model.Video.Id, typeof(PlovdivTournament.Entities.Entity.Video))" id="Delete_Vid">
-                    <img src="/Resources/imgs/delete.png" alt="delete" /></a>
-            }
-            @{Html.RenderAction("GetVideo", "Gallery",new { id = Model.Video.Id, width = "640", height = "350" });}
-        </div>
-        <div class="clearfix"></div>
-        <div id="Vid_Info">
-            <p>
-                Caption: @Model.Video.Title
-            </p>
-            <p class="description">
-                Description: @Model.Video.Description
-            </p>
+        <div id="PreviewVidWrap">
+            <div id="Big_Vid">
+                @if (Model.CurrentUser != null && (Model.CurrentUser.IsAdmin || Model.CurrentUser.Id == Model.Video.Owner.Id))
+                {
+                    <a href="@string.Format("/Gallery/Delete?id={0}&type={1}", Model.Video.Id, typeof(PlovdivTournament.Entities.Entity.Video))" id="Delete_Vid">
+                        <img src="/Resources/imgs/delete.png" alt="delete" /></a>
+                }
+                @{Html.RenderAction("GetVideo", "Gallery",new { id = Model.Video.Id, width = "640", height = "350" });}
+            </div>
+            <div class="clearfix"></div>
+            <div id="Vid_Info">
+                <p>
+                    Заглавие: @Model.Video.Title
+                </p>
+                <p class="description">
+                    Описание: @Model.Video.Description
+                </p>
+            </div>
         </div>
     }
-</div>
+
+<div class="clearfix"></div>

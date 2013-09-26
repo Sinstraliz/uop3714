@@ -11,7 +11,12 @@
 	<link rel="stylesheet" type="text/css" href="~/Resources/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="~/Resources/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="~/Resources/css/admin.css" />
-	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	@*<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>*@
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="@Url.Content("~/Resources/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="@Url.Content("~/Resources/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Resources/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 	<script type="text/javascript" src="~/Resources/scripts/tinymce/js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 		tinymce.init({
@@ -64,6 +69,11 @@
 	            $('#LanguageDropDownForm').submit();
 	        })
 	    });
+
+	    //$(function () {
+	    //    $("#startDatePicker").datepicker({ dateFormat: 'dd-mm-yy', changeYear: true, defaultDate: new Date() });
+	    //    $("#endDatePicker").datepicker({ dateFormat: 'dd-mm-yy', changeYear: true, defaultDate: new Date() });
+	    //});
 	</script>
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -105,29 +115,28 @@
 						<ul>
 							<li><a href="~/Manage/Info/Program">Програма</a></li>
 							<li><a href="~/Manage/Info/Referees">Жури</a></li>
-							<li><a href="~/Manage/Info/Evaluation">Оценяване</a></li>
 							<li><a href="~/Manage/Info/Workshops">Семинари</a></li>
 							<li><a href="~/Manage/Info/Prizes">Награди</a></li>
 							<li><a href="~/Manage/Info/Accommodation">Настаняване</a></li>
-							<li><a href="~/Manage/Info/Results">Резултати</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Категории</a>
+					<li><a href="#">Регламент</a>
 						<ul>
+							<li><a href="~/Manage/Info/Categories">Категории</a></li>
 							<li><a href="~/Manage/Info/Styles">Стилове</a></li>
 							<li><a href="~/Manage/Info/Rules">Правила</a></li>
-							
+							<li><a href="~/Manage/Info/Evaluation">Оценяване</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Регистрация</a></li>
+					<li><a href="~/Manage/Info/Taxes">Такси</a></li>
+					<li><a href="~/Manage/Register/Index">Регистрация</a></li>
 					<li><a href="#">Галерия</a>
 						<ul>
 							<li><a href="~/Manage/Gallery/UploadVideo">Видео</a></li>
 							<li><a href="~/Manage/Gallery/UploadPhoto">Снимки</a></li>
 						</ul>
 					</li>
-					<li><a href="~/Manage/Info/Regulations">Регламент</a></li>
-					<li><a href="~/Manage/Info/Taxes">Такси</a></li>
+					<li><a href="~/Manage/Info/Results">Резултати</a></li>
 					<li><a href="~/Manage/Info/AboutUs">Контакти</a></li>
 				</ul>
 			</nav>
@@ -138,11 +147,11 @@
 		</section>
 		<footer>
 			<div class="logo">
-				<img src="~/Resources/imgs/logo.png" alt="LOGO" />
+				<a href="~/Manage/Home/Index"><img src="~/Resources/imgs/logo.png" alt="LOGO" /></a>
 			</div>
 			<div id="SocialWrap">
-				<a href="#"><img src="~/Resources/imgs/f.png" alt="LOGO" /></a>
-				<a href="#"><img src="~/Resources/imgs/y.png" alt="LOGO" /></a>
+				<a href="https://www.facebook.com/samodiva1998?ref=ts&fref=ts" target="_blank"><img src="~/Resources/imgs/f.png" alt="LOGO" /></a>
+				<a href="http://www.youtube.com/user/SKSamodiva" target="_blank"><img src="~/Resources/imgs/y.png" alt="LOGO" /></a>
 			</div>
 			<div class="clearfix"></div>
 		</footer>

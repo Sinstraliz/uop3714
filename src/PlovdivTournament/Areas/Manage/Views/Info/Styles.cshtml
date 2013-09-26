@@ -5,6 +5,56 @@
     Layout = "~/Areas/Manage/Views/Shared/Admin_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ClasicDance").click(function () {
+            $("#ClasicDanceInfo").slideToggle("slow");
+        });
+        $("#ModernDance").click(function () {
+            $("#ModernDanceInfo").slideToggle("slow");
+        });
+        $("#JazDance").click(function () {
+            $("#JazDanceInfo").slideToggle("slow");
+        });
+        $("#DanceShow").click(function () {
+            $("#DanceShowInfo").slideToggle("slow");
+        });
+        $("#DanceShowB").click(function () {
+            $("#DanceShowBInfo").slideToggle("slow");
+        });
+        $("#Acrogym").click(function () {
+            $("#AcrogymInfo").slideToggle("slow");
+        });
+        $("#TipicalDance").click(function () {
+            $("#TipicalDanceInfo").slideToggle("slow");
+        });
+        $("#EthnoShow").click(function () {
+            $("#EthnoShowInfo").slideToggle("slow");
+        });
+        $("#LatinShow").click(function () {
+            $("#LatinShowInfo").slideToggle("slow");
+        });
+        $("#HipHopBattle").click(function () {
+            $("#HipHopBattleInfo").slideToggle("slow");
+        });
+        $("#BreakBattle").click(function () {
+            $("#BreakBattleInfo").slideToggle("slow");
+        });
+        $("#FreeOpenDance").click(function () {
+            $("#FreeOpenDanceInfo").slideToggle("slow");
+        });
+        $("#PartyTimeSeniors").click(function () {
+            $("#PartyTimeSeniorsInfo").slideToggle("slow");
+        });
+        $("#MiniProductions").click(function () {
+            $("#MiniProductionsInfo").slideToggle("slow");
+        });
+        $("#Productions").click(function () {
+            $("#ProductionsInfo").slideToggle("slow");
+        });
+    });
+</script>
+
 @using(Html.BeginForm("Save", "Master", FormMethod.Post))
 {
     @Html.HiddenFor(x => x.CurrentLanguage);
@@ -16,4 +66,4 @@
     </div>
 
     <a href="#" onclick="save_html(); get_form(this).submit(); return false">Save </a> 
-}"save_html(); get_form(this).submit(); return false">Save </a> 
+}

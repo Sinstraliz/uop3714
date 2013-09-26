@@ -37,7 +37,7 @@ namespace PlovdivTournament.Web.Library.IdentityAndAccess
             Session = session;
         }
 
-        public void AuthenticateUser(String email, String password)
+        public bool AuthenticateUser(String email, String password)
         {
             User user = Session.Query<User>().Where(x => x.Email == email && x.Password == password).SingleOrDefault();
 
@@ -51,11 +51,15 @@ namespace PlovdivTournament.Web.Library.IdentityAndAccess
                     authenticatedUsers.TryAdd(HttpContext.Current.Session.SessionID, userInfo);
 
                 HttpContext.Current.Session[typeof(SecurityManager).Name] = this;
+
+                return true;
             }
             else
             {
                 UserInfo uInfo;
                 authenticatedUsers.TryRemove(HttpContext.Current.Session.SessionID, out uInfo);
+
+                return false;
             }
         }
 

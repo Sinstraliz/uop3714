@@ -1,5 +1,5 @@
 ﻿@model PlovdivTournament.Web.Models.RegisterViewModel
-@using PlovdivTournament.Web.Library.Helpers
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
@@ -7,28 +7,91 @@
 <script type="text/javascript">
     $(function () {
         $('#TournamentDropDown').change(function () {
+            var categoryDropDown = $('#CategoryDropDown');
+            categoryDropDown.remove();
+            var ageGroupDropDown = $('#AgeGroupDropDown');
+            ageGroupDropDown.remove();
             var form = $("#RegisterForm");
             form.attr("action", "/Register/Index");
             form.submit();
         })
         $('#DisciplineDropDown').change(function () {
+            var categoryDropDown = $('#CategoryDropDown');
+            categoryDropDown.remove();
+            var ageGroupDropDown = $('#AgeGroupDropDown');
+            ageGroupDropDown.remove();
+
             var form = $("#RegisterForm");
             form.attr("action", "/Register/Index");
             form.submit();
         })
         $('#CategoryDropDown').change(function () {
+            var ageGroupDropDown = $('#AgeGroupDropDown');
+            ageGroupDropDown.remove();
+
             var form = $("#RegisterForm");
             form.attr("action", "/Register/Index");
             form.submit();
         })
         $('#AgeGroupDropDown').change(function () {
+
             var form = $("#RegisterForm");
             form.attr("action", "/Register/Index");
             form.submit();
         })
     });
-</script>
 
+    function SetSelectedClubMembers() {
+        var hidden = $("#SelectedClubMemberHidden");
+        hidden.val('');
+        hidden.value = '';
+
+		var dropdowns = $(".MemberDropDownList");
+
+		for (var i = 0; i < dropdowns.length; i++) {
+		    if (dropdowns[i].value != '') {
+		        hidden.val(hidden.val() + ',' + dropdowns[i].value);
+		    }
+		}
+    };
+
+    function RemoveCategoryMember(memberId) {
+        document.getElementById(memberId).style.display = "none";
+        document.getElementById(memberId).style.height = "0px";
+
+        $.ajax({
+            type: 'POST',
+            url: '/Register/RemoveCategoryMember',
+            data: { memberId: memberId },
+            context: document.body,
+            error: function () {
+                alert('Имаше грешка при опита за изтриване. Моля опитайте отново.');
+            }
+        });
+    };
+
+    function EditCategoryMember(memberId) {
+        $.ajax({
+            type: 'POST',
+            url: '/Register/EditCategoryMember',
+            data: { memberId: memberId },
+            context: document.body,
+            error: function () {
+                alert('Имаше грешка при опита за редактиране. Моля опитайте отново.');
+            }
+        });
+    };
+    $(function () {
+        var selectedDisciplineOption = $('#DisciplineDropDown :selected').text();
+        var selectedCategoryOption = $('#CategoryDropDown :selected').text();
+
+        if ((selectedDisciplineOption == 'Hip Hop Battle' || selectedDisciplineOption == 'Break Battle') && selectedCategoryOption == '1 vs 1') {
+            $('#DanceName').hide();
+            $('#DanceName').val('default');
+        }
+    });
+
+</script>
 
 <div class="RegisterWrap">
     @using (Html.BeginForm("Save", "Register", FormMethod.Post, new { id = "RegisterForm" }))
@@ -39,48 +102,60 @@
 
         if (Model.SelectedTournament != null)
         {
-        @Html.DropDownListFor(x => x.SelectedDisciplineId, SelectListHelper.GetDisciplines(Model.SelectedTournament.Disciplines), new { id = "DisciplineDropDown" })
-        }
+            @Html.DropDownListFor(x => x.SelectedDisciplineId, SelectListHelper.GetDisciplines(Model.SelectedTournament.Disciplines), new { id = "DisciplineDropDown" })
 
-        if (Model.SelectedDiscipline != null)
-        {
-        @Html.DropDownListFor(x => x.SelectedCategoryId, SelectListHelper.GetTournamentCategories(Model.SelectedDiscipline.Categories), new { id = "CategoryDropDown" })
-        }
-
-        if (Model.SelectedCategory != null)
-        { 
-        @Html.DropDownListFor(x => x.SelectedAgeGroupId, SelectListHelper.GetDisciplineAgeGroups(Model.SelectedTournament.AgeGroups), new { id = "AgeGroupDropDown" })
-        }
-
-        if (Model.SelectedAgeGroup != null)
-        {
-            @Html.EditorFor(x => x.DanceName)
+            if (Model.Categories.Count > 1)
+            {
+                @Html.DropDownListFor(x => x.SelectedCategoryId, SelectListHelper.GetTournamentCategories(Model.SelectedDiscipline.Categories), new { id = "CategoryDropDown" })
+            }
             
-            for (int i = 1; i <= Model.SelectedCategory.MaxNumberOfParticipants; i++)
+            if (Model.AgeGroups.Count > 1)
+            { 
+                @Html.DropDownListFor(x => x.SelectedAgeGroupId, SelectListHelper.GetDisciplineAgeGroups(Model.SelectedCategory.AgeGroups), new { id = "AgeGroupDropDown" })
+            }     
+               
+            if (Model.SelectedAgeGroup != null)
             {
-                @Html.DropDownList("SelectedClubMember", SelectListHelper.GetClubMembers(Model.CurrentClub.Members), new { @class = "MemberDropDownList" })
-            }
-        }
+                @Html.TextBox("DanceName", "", new { placeholder = "Име на танца" })
+            
+                for (int i = 1; i <= Model.SelectedCategory.MaxNumberOfParticipants; i++)
+                {
+                    @Html.DropDownList("SelectedClubMember", SelectListHelper.GetClubMembers(Model.CurrentClub.Members, Model.SelectedAgeGroup), new { @class = "MemberDropDownList" })
+                }
          
-        <div class="clearfix"></div>
-        <p><a class="RegButton" href="#" onclick="SetSelectedClubMembers(); get_form(this).submit(); return false">Save</a></p>
-    }
-</div>
-<div class="RegisteredWrap">
-    @if (Model.SelectedAgeGroup != null && Model.RegisteredMembers.Count > 0)
-    {
-        foreach (var member in Model.RegisteredMembers)
-        {
-        <div class="CategoryMember">
-            <p>@member.Name</p>
-            <br />
-            @foreach (var participant in member.Participants)
-            {
-                <p>@string.Format("{0} {1} {2} {3}", participant.FirstName, participant.MiddleName, participant.LastName, participant.EGN)</p>
-                <br />
+            <div class="clearfix"></div>
+            <p><a class="RegButton" id="save_button" href="#" onclick="SetSelectedClubMembers(); get_form(this).submit(); return false">Добави</a></p>
             }
-        </div>
+
         }
+
+        if (!ViewData.ModelState.IsValid)
+        { 
+            @Html.ValidationSummary();
+        }
+        <div class="clearfix"></div>
     }
 </div>
+    <div class="RegisteredWrap">
+        @if (Model.SelectedAgeGroup != null && Model.RegisteredMembers.Count > 0)
+        {
+            foreach (var member in Model.RegisteredMembers)
+            {
+            
+            <div class="CategoryMember" id="@member.Id">
+                <a  class="PartialDelete" href="#" onclick="RemoveCategoryMember('@member.Id'); return false" id="Delete_Member">
+                    <img src="/Resources/imgs/delete.png" alt="изтрий" />
+                </a>
+                <p>@member.Name</p>
+
+                @foreach (var participant in member.Participants)
+                {
+                    <p>@string.Format("{0} {1} {2} {3}", participant.FirstName, participant.MiddleName, participant.LastName, participant.EGN)</p>
+                
+                }
+                @*<a href="#" onclick="EditCategoryMember('@member.Id'); return false" id="Edit_Member">Редактирай</a>*@
+            </div>
+            }
+        }
+    </div>
 <div class="clearfix"></div>

@@ -8,34 +8,33 @@
  
     <div class="clearfix"></div>
     <div class="Profile_Photo">
-        <img src=@String.Format("Gallery/GetImage/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133) />
+        <img src="@String.Format("Gallery/GetImage/{0}?&width={1}&height={2}", Model.Avatar.Id, 200, 133)" />
     </div>
     <fieldset class="Profile_Info">
-        <p>Email: <span><a href="#">@Model.Email</a></span></p>
-        <p>First Name: <span><a href="#">@Model.FirstName</a></span></p>
-        <p>Middle Name: <span><a href="#">@Model.MiddleName</a></span></p>
-        <p>Last Name: <span><a href="#">@Model.LastName</a></span></p>
-        <p>EGN: <span><a href="#">@Model.EGN</a></span></p>
-        <p>Phone: <span><a href="#">@Model.Phone</a></span></p>
-        <p>Fax: <span><a href="#">@Model.Fax</a></span></p>
+        <p>Е-майл: <span><a href="#">@Model.Email</a></span></p>
+        <p>Име: <span><a href="#">@Model.FirstName</a></span></p>
+        <p>Бащино име: <span><a href="#">@Model.MiddleName</a></span></p>
+        <p>Фамилия: <span><a href="#">@Model.LastName</a></span></p>
+        <p>ЕГН: <span><a href="#">@Model.EGN</a></span></p>
+        <p>Телефон: <span><a href="#">@Model.Phone</a></span></p>
+        <p>Факс: <span><a href="#">@Model.Fax</a></span></p>
+
         @if (Model.IsSubscribedForNewsFeed)
         { 
-            <p>You are subscribed for news feed</p>
+            <p>Вие сте записани да получавам новини</p>
         }
 
-        
-
-        <p>Delivery Line: <span><a href="#">@Model.DeliveryLine</a></span></p>
-        <p>City: <span><a href="#">@Model.City</a></span></p>
-        <p>State: <span><a href="#">@Model.State</a></span></p>
-        <p>Zip: <span><a href="#">@Model.Zip</a></span></p>
-        <p>Country: <span><a href="#">@Model.Country</a></span></p>
+        <p>Улица: <span><a href="#">@Model.DeliveryLine</a></span></p>
+        <p>Град: <span><a href="#">@Model.City</a></span></p>
+        <p>Област: <span><a href="#">@Model.State</a></span></p>
+        <p>Пощенски код: <span><a href="#">@Model.Zip</a></span></p>
+        <p>Държава: <span><a href="#">@Model.Country</a></span></p>
     </fieldset>
        <div class="EditButton ProButton">
-        <a href="Profile/Edit">Edit</a>
+        <a href="Profile/Edit">Редактирай</a>
     </div>
     <div class="ChangePasswordButton ProButton ">
-        <a href="Profile/ChangePassword">Change Password</a>
+        <a href="Profile/ChangePassword">Промени паролата</a>
     </div>
 </div>
 
