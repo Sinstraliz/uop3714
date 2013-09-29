@@ -436,16 +436,10 @@ namespace PlovdivTournament.Web.Manage.Controllers
             #region Hip Hop
 
             var hipHopOneVSOneAgeGroups = new List<AgeGroup>();
-            hipHopOneVSOneAgeGroups.Add(new AgeGroup("до 8г.", 0, 8, 0));
-            hipHopOneVSOneAgeGroups.Add(new AgeGroup("9-11г.", 9, 11, 7));
-            hipHopOneVSOneAgeGroups.Add(new AgeGroup("12-15г.", 12, 15, 10));
-            hipHopOneVSOneAgeGroups.Add(new AgeGroup("над 16г.", 16, int.MaxValue, 14));
+            hipHopOneVSOneAgeGroups.Add(new AgeGroup("default", 0, int.MaxValue, 0));
 
             var hipHopGroupAgeGroups = new List<AgeGroup>();
-            hipHopGroupAgeGroups.Add(new AgeGroup("до 8г.", 0, 8, 0));
-            hipHopGroupAgeGroups.Add(new AgeGroup("9-11г.", 9, 11, 7));
-            hipHopGroupAgeGroups.Add(new AgeGroup("12-15г.", 12, 15, 10));
-            hipHopGroupAgeGroups.Add(new AgeGroup("над 16г.", 16, int.MaxValue, 14));
+            hipHopGroupAgeGroups.Add(new AgeGroup("default", 0, int.MaxValue, 0));
 
             var hipHopCategories = new List<Category>();
             hipHopCategories.Add(new Category("1 vs 1", hipHopOneVSOneAgeGroups, 1, 1));
@@ -456,16 +450,10 @@ namespace PlovdivTournament.Web.Manage.Controllers
             #region Break Battle
 
             var breakBattleOneVSOneAgeGroups = new List<AgeGroup>();
-            breakBattleOneVSOneAgeGroups.Add(new AgeGroup("до 8г.", 0, 8, 0));
-            breakBattleOneVSOneAgeGroups.Add(new AgeGroup("9-11г.", 9, 11, 7));
-            breakBattleOneVSOneAgeGroups.Add(new AgeGroup("12-15г.", 12, 15, 10));
-            breakBattleOneVSOneAgeGroups.Add(new AgeGroup("над 16г.", 16, int.MaxValue, 14));
+            breakBattleOneVSOneAgeGroups.Add(new AgeGroup("default", 0, int.MaxValue, 0));
 
             var breakBattleGroupAgeGroups = new List<AgeGroup>();
-            breakBattleGroupAgeGroups.Add(new AgeGroup("до 8г.", 0, 8, 0));
-            breakBattleGroupAgeGroups.Add(new AgeGroup("9-11г.", 9, 11, 7));
-            breakBattleGroupAgeGroups.Add(new AgeGroup("12-15г.", 12, 15, 10));
-            breakBattleGroupAgeGroups.Add(new AgeGroup("над 16г.", 16, int.MaxValue, 14));
+            breakBattleGroupAgeGroups.Add(new AgeGroup("default", 0, int.MaxValue, 0));
 
             var breakBattleCategories = new List<Category>();
             breakBattleCategories.Add(new Category("1 vs 1", breakBattleOneVSOneAgeGroups, 1, 1));

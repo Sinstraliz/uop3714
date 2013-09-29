@@ -4,7 +4,7 @@
     Layout = "~/Areas/Manage/Views/Shared/Admin_Layout.cshtml";
 }
 
-@using(Html.BeginForm("Save", "Master", FormMethod.Post))
+@using (Html.BeginForm("Save", "Master", FormMethod.Post))
 {
     @Html.HiddenFor(x => x.CurrentLanguage);
     @Html.HiddenFor(x => x.PageContent, new { id = "hidden_content" })
@@ -14,5 +14,5 @@
         @Html.Raw(Model.PageContent)
     </div>
 
-    <a href="#" onclick="save_html(); get_form(this).submit(); return false">Save </a> 
+    <a href="#" onclick="save_html(); get_form(this).submit(); return false">Save</a> 
 }

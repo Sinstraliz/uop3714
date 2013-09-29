@@ -41,14 +41,25 @@ namespace MyPhoto.Tools.DatabaseTool
             {
                 session.BeginTransaction();
 
-                var admin = new User(adminId, "samodiva1998", "760508", "ASD", "ASD", "ASD", "ASD", "ASD", "ASD", true);
-                var address = new Address("Bulgaria", "Plovdiv", "Plovdiv", "4000", "Petyr Shilev 14", admin);
+                var admin = new User(adminId, "samodiva1998", "760508", "Admin", "Admin", "Admin", "Admin", "Admin", "Admin", true);
+                var address = new Address("Admin", "Admin", "Admin", "Admin", "Admin", admin);
                 admin.Address = address;
-                var club = new Club("Samodiva", "Some info", admin);
+                var club = new Club("Samodiva", "Admin", admin);
                 admin.Club = club;
                 admin.IsAdmin = true;
                 admin.IsActive = true;
                 session.Save(admin);
+
+
+                var masterAdmin = new User(Guid.NewGuid(), "Sinstraliz", "pr0st0passa", "Admin", "Admin", "Admin", "Admin", "Admin", "Admin", true);
+                var masterAddress = new Address("Admin", "Admin", "Admin", "Admin", "Admin", masterAdmin);
+                masterAdmin.Address = masterAddress;
+                var masterClub = new Club("Admin", "Admin", masterAdmin);
+                masterAdmin.Club = masterClub;
+                masterAdmin.IsAdmin = true;
+                masterAdmin.IsActive = true;
+                session.Save(masterAdmin);
+
                 session.Flush();
 
                 session.Transaction.Commit();

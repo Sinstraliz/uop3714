@@ -30,19 +30,30 @@ namespace PlovdivTournament.Web.Manage.Controllers
 
             var action = model.Page.Substring(model.Page.IndexOf('/') + 1, model.Page.Length - model.Page.IndexOf('/') - 1);
 
-            var content = Session.Query<Content>().FirstOrDefault(x => x.Page == controller && x.Language == model.CurrentLanguage);
+            var tmpController = controller;
 
-            if (content == null)
-                content = new Content(controller, model.CurrentLanguage, html);
+            if (controller == "Info")
+                tmpController = action;
+
+            var content = Session.Query<Content>().FirstOrDefault(x => x.Page == tmpController && x.Language == model.CurrentLanguage);
+
+            if (content != null)
+            {
+                content.PageContent = html;
+
+                Session.Update(content);
+            }
             else
             {
+                content = new Content(controller, model.CurrentLanguage, html);
+
                 content.PageContent = html;
 
                 if (controller == "Info")
                     content.Page = action;
-            }
 
-            Session.SaveOrUpdate(content);
+                Session.Save(content);
+            }
 
             return RedirectToAction(action, controller);
         }
